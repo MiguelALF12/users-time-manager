@@ -14,6 +14,7 @@ from FRONTEND.views import edit, evacuate, register, search
 from FRONTEND.views.placements import placeholders
 from FRONTEND.views import icons
 
+
 class UiMainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
@@ -486,13 +487,13 @@ class UiMainWindow(object):
         font.setPointSize(19)
         self.putTotalPeopleLabel.setFont(font)
         self.putTotalPeopleLabel.setStyleSheet("QLabel {\n"
-                                             "    border: 2px rounded;\n"
-                                             "    border-color: rgb(57, 57, 57);\n"
-                                             "    border-radius: 8px;\n"
-                                             "    border-style: outset;\n"
-                                             "    background-color: #ffffff;\n"
-                                             "    padding: 5 px;\n"
-                                             "color:#000000;}")
+                                               "    border: 2px rounded;\n"
+                                               "    border-color: rgb(57, 57, 57);\n"
+                                               "    border-radius: 8px;\n"
+                                               "    border-style: outset;\n"
+                                               "    background-color: #ffffff;\n"
+                                               "    padding: 5 px;\n"
+                                               "color:#000000;}")
         self.putTotalPeopleLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putTotalPeopleLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putTotalPeopleLabel.setLineWidth(2)
@@ -603,7 +604,7 @@ class UiMainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "Arenero PlayKids "))
         mainWindow.setToolTip(_translate("mainWindow", "Dinero Total"))
-        self.searchLineEdit.setPlaceholderText(_translate("mainWindow",placeholders['PH_SEARCH_RECORD']))
+        self.searchLineEdit.setPlaceholderText(_translate("mainWindow", placeholders['PH_SEARCH_RECORD']))
         self.crudLabel_2.setToolTip(_translate("mainWindow", "Opciones para registros independientes"))
         self.crudLabel_2.setText(_translate("mainWindow", "ADICIONAR - BUSCAR - MANIPULAR REGISTROS POR INDEPENDIENTE"))
         self.crud_recordPushButton.setToolTip(_translate("mainWindow", "Registrar usuario"))
@@ -671,6 +672,5 @@ class UiMainWindow(object):
         self.viewEvacuate = evacuate.Ui_Form()
         self.viewEvacuate.showEvacuate()
 
-#TODO fix style of cells on register users's table
-#TODO fix someway the recommended Typos and PEP highlights
-
+# TODO fix style of cells on register users's table
+# TODO fix someway the recommended Typos and PEP highlights

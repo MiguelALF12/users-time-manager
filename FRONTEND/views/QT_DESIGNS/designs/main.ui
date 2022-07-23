@@ -195,7 +195,7 @@ QPushButton:pressed {
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="icons/icons.qrc">
+             <iconset resource="visuals/icons.qrc">
               <normaloff>:/usedIcons/icons8-children-30.png</normaloff>:/usedIcons/icons8-children-30.png</iconset>
             </property>
             <property name="iconSize">
@@ -342,7 +342,7 @@ QPushButton:pressed {
              <string>REGISTRAR</string>
             </property>
             <property name="icon">
-             <iconset resource="icons/icons.qrc">
+             <iconset resource="visuals/icons.qrc">
               <normaloff>:/usedIcons/icons8-pen-64.png</normaloff>:/usedIcons/icons8-pen-64.png</iconset>
             </property>
             <property name="iconSize">
@@ -399,7 +399,7 @@ QPushButton:pressed {
              <string>BUSCAR</string>
             </property>
             <property name="icon">
-             <iconset resource="icons/icons.qrc">
+             <iconset resource="visuals/icons.qrc">
               <normaloff>:/usedIcons/icons8-search-30.png</normaloff>:/usedIcons/icons8-search-30.png</iconset>
             </property>
            </widget>
@@ -450,7 +450,7 @@ QPushButton:pressed {
              <string>EDITAR</string>
             </property>
             <property name="icon">
-             <iconset resource="icons/icons.qrc">
+             <iconset resource="visuals/icons.qrc">
               <normaloff>:/usedIcons/icons8-edit-64.png</normaloff>:/usedIcons/icons8-edit-64.png</iconset>
             </property>
             <property name="iconSize">
@@ -1200,7 +1200,7 @@ QPushButton:pressed {
          <string>EVACUAR</string>
         </property>
         <property name="icon">
-         <iconset resource="icons/icons.qrc">
+         <iconset resource="visuals/icons.qrc">
           <normaloff>:/usedIcons/icons8-sign-out-30.png</normaloff>:/usedIcons/icons8-sign-out-30.png</iconset>
         </property>
         <property name="iconSize">
@@ -1351,7 +1351,7 @@ QPushButton:pressed {
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="icons/icons.qrc"/>
+  <include location="visuals/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

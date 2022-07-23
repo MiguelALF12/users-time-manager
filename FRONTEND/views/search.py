@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/miguellopez/Desktop/PROYECTS/PAGOS/ARENERO-RAMIRO/FRONTEND/views/QT_DESIGNS/designs/search.ui'
+# Form implementation generated from reading ui file
+# '../FRONTEND/views/QT_DESIGNS/designs/search.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -11,6 +12,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from FRONTEND.views import icons
 from FRONTEND.views.placements import placeholders
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -79,18 +81,18 @@ class Ui_Form(object):
         self.searchLineEdit.setMouseTracking(True)
         self.searchLineEdit.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.searchLineEdit.setStyleSheet("QLineEdit{\n"
-"    background-color: #ffffff;\n"
-"    border: 1px rounded #232323;\n"
-"    border-radius: 12px;\n"
-"    border-style: outset;\n"
-"    font-family: \"Helvetica\";\n"
-"    font-weight: 400;\n"
-"    font-size: 18px;\n"
-"    text-align: left;\n"
-"    padding-left: 10px;\n"
-"    color:#000000;}\n"
-"\n"
-"")
+                                          "    background-color: #ffffff;\n"
+                                          "    border: 1px rounded #232323;\n"
+                                          "    border-radius: 12px;\n"
+                                          "    border-style: outset;\n"
+                                          "    font-family: \"Helvetica\";\n"
+                                          "    font-weight: 400;\n"
+                                          "    font-size: 18px;\n"
+                                          "    text-align: left;\n"
+                                          "    padding-left: 10px;\n"
+                                          "    color:#000000;}\n"
+                                          "\n"
+                                          "")
         self.searchLineEdit.setText("")
         self.searchLineEdit.setFrame(False)
         self.searchLineEdit.setReadOnly(False)
@@ -106,22 +108,22 @@ class Ui_Form(object):
         self.searchRecordPushButton.setMinimumSize(QtCore.QSize(50, 32))
         self.searchRecordPushButton.setMaximumSize(QtCore.QSize(50, 32))
         self.searchRecordPushButton.setStyleSheet("QPushButton{\n"
-"    padding: 0px 10px 0px 10px;\n"
-"    background: rgb(255, 246, 53);\n"
-"    color: #ffffff;\n"
-"    border:1px rounded #232323;\n"
-"    border-radius: 10px;\n"
-"    border-style: outset;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: rgb(232, 218, 70);\n"
-"    }\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border-style: inset;\n"
-"    background: rgb(214, 218, 218);\n"
-"    }")
+                                                  "    padding: 0px 10px 0px 10px;\n"
+                                                  "    background: rgb(255, 246, 53);\n"
+                                                  "    color: #ffffff;\n"
+                                                  "    border:1px rounded #232323;\n"
+                                                  "    border-radius: 10px;\n"
+                                                  "    border-style: outset;\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QPushButton:hover {\n"
+                                                  "    background: rgb(232, 218, 70);\n"
+                                                  "    }\n"
+                                                  "\n"
+                                                  "QPushButton:pressed {\n"
+                                                  "    border-style: inset;\n"
+                                                  "    background: rgb(214, 218, 218);\n"
+                                                  "    }")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/usedIcons/icons8-search-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.searchRecordPushButton.setIcon(icon1)
@@ -154,7 +156,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.nameLabel.setFont(font)
         self.nameLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                     "color:#ffffff;")
         self.nameLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.nameLabel.setObjectName("nameLabel")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.nameLabel)
@@ -171,7 +173,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.braceletNumLabel.setFont(font)
         self.braceletNumLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                            "color:#ffffff;")
         self.braceletNumLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.braceletNumLabel.setWordWrap(True)
         self.braceletNumLabel.setObjectName("braceletNumLabel")
@@ -190,13 +192,13 @@ class Ui_Form(object):
         font.setPointSize(17)
         self.putNameLabel.setFont(font)
         self.putNameLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 3px;\n"
-"    color:#000000;}")
+                                        "    border: 2px rounded;\n"
+                                        "    border-color: rgb(57, 57, 57);\n"
+                                        "    border-radius: 8px;\n"
+                                        "    border-style: outset;\n"
+                                        "    background-color: #ffffff;\n"
+                                        "    padding: 3px;\n"
+                                        "    color:#000000;}")
         self.putNameLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putNameLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putNameLabel.setLineWidth(2)
@@ -216,13 +218,13 @@ class Ui_Form(object):
         font.setPointSize(17)
         self.putBraceletNumLabel.setFont(font)
         self.putBraceletNumLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 3px;\n"
-"    color:#000000;}")
+                                               "    border: 2px rounded;\n"
+                                               "    border-color: rgb(57, 57, 57);\n"
+                                               "    border-radius: 8px;\n"
+                                               "    border-style: outset;\n"
+                                               "    background-color: #ffffff;\n"
+                                               "    padding: 3px;\n"
+                                               "    color:#000000;}")
         self.putBraceletNumLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putBraceletNumLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putBraceletNumLabel.setLineWidth(2)
@@ -248,7 +250,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.totalTimeLabel.setFont(font)
         self.totalTimeLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                          "color:#ffffff;")
         self.totalTimeLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.totalTimeLabel.setObjectName("totalTimeLabel")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.totalTimeLabel)
@@ -265,7 +267,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.addedTimeLabel.setFont(font)
         self.addedTimeLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                          "color:#ffffff;")
         self.addedTimeLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.addedTimeLabel.setObjectName("addedTimeLabel")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.addedTimeLabel)
@@ -282,7 +284,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.entryHourLabel.setFont(font)
         self.entryHourLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                          "color:#ffffff;")
         self.entryHourLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.entryHourLabel.setObjectName("entryHourLabel")
         self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.entryHourLabel)
@@ -299,7 +301,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.exitTimeLabel.setFont(font)
         self.exitTimeLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                         "color:#ffffff;")
         self.exitTimeLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.exitTimeLabel.setWordWrap(True)
         self.exitTimeLabel.setObjectName("exitTimeLabel")
@@ -316,13 +318,13 @@ class Ui_Form(object):
         font.setPointSize(17)
         self.putTotalTimeLabel.setFont(font)
         self.putTotalTimeLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 3px;\n"
-"    color:#000000;}")
+                                             "    border: 2px rounded;\n"
+                                             "    border-color: rgb(57, 57, 57);\n"
+                                             "    border-radius: 8px;\n"
+                                             "    border-style: outset;\n"
+                                             "    background-color: #ffffff;\n"
+                                             "    padding: 3px;\n"
+                                             "    color:#000000;}")
         self.putTotalTimeLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putTotalTimeLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putTotalTimeLabel.setLineWidth(2)
@@ -341,13 +343,13 @@ class Ui_Form(object):
         font.setPointSize(17)
         self.putAddedTimeLabel.setFont(font)
         self.putAddedTimeLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 3px;\n"
-"    color:#000000;}")
+                                             "    border: 2px rounded;\n"
+                                             "    border-color: rgb(57, 57, 57);\n"
+                                             "    border-radius: 8px;\n"
+                                             "    border-style: outset;\n"
+                                             "    background-color: #ffffff;\n"
+                                             "    padding: 3px;\n"
+                                             "    color:#000000;}")
         self.putAddedTimeLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putAddedTimeLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putAddedTimeLabel.setLineWidth(2)
@@ -366,13 +368,13 @@ class Ui_Form(object):
         font.setPointSize(17)
         self.putEntryHourLabel.setFont(font)
         self.putEntryHourLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 3px;\n"
-"    color:#000000;}")
+                                             "    border: 2px rounded;\n"
+                                             "    border-color: rgb(57, 57, 57);\n"
+                                             "    border-radius: 8px;\n"
+                                             "    border-style: outset;\n"
+                                             "    background-color: #ffffff;\n"
+                                             "    padding: 3px;\n"
+                                             "    color:#000000;}")
         self.putEntryHourLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putEntryHourLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putEntryHourLabel.setLineWidth(2)
@@ -391,13 +393,13 @@ class Ui_Form(object):
         font.setPointSize(17)
         self.putExitTimeLabel.setFont(font)
         self.putExitTimeLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 3px;\n"
-"    color:#000000;}")
+                                            "    border: 2px rounded;\n"
+                                            "    border-color: rgb(57, 57, 57);\n"
+                                            "    border-radius: 8px;\n"
+                                            "    border-style: outset;\n"
+                                            "    background-color: #ffffff;\n"
+                                            "    padding: 3px;\n"
+                                            "    color:#000000;}")
         self.putExitTimeLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putExitTimeLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putExitTimeLabel.setLineWidth(2)
@@ -422,7 +424,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.priceLabel.setFont(font)
         self.priceLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                      "color:#ffffff;")
         self.priceLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.priceLabel.setWordWrap(True)
         self.priceLabel.setObjectName("priceLabel")
@@ -440,7 +442,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.payedLabel.setFont(font)
         self.payedLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                      "color:#ffffff;")
         self.payedLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.payedLabel.setObjectName("payedLabel")
         self.formLayout_3.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.payedLabel)
@@ -457,7 +459,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.parentIDLabel.setFont(font)
         self.parentIDLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                         "color:#ffffff;")
         self.parentIDLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.parentIDLabel.setObjectName("parentIDLabel")
         self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.parentIDLabel)
@@ -474,7 +476,7 @@ class Ui_Form(object):
         font.setWeight(75)
         self.parentLabel.setFont(font)
         self.parentLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                       "color:#ffffff;")
         self.parentLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.parentLabel.setObjectName("parentLabel")
         self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.parentLabel)
@@ -490,13 +492,13 @@ class Ui_Form(object):
         font.setPointSize(17)
         self.putParentLabel.setFont(font)
         self.putParentLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 3px;\n"
-"    color:#000000;}")
+                                          "    border: 2px rounded;\n"
+                                          "    border-color: rgb(57, 57, 57);\n"
+                                          "    border-radius: 8px;\n"
+                                          "    border-style: outset;\n"
+                                          "    background-color: #ffffff;\n"
+                                          "    padding: 3px;\n"
+                                          "    color:#000000;}")
         self.putParentLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putParentLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putParentLabel.setLineWidth(2)
@@ -515,13 +517,13 @@ class Ui_Form(object):
         font.setPointSize(17)
         self.putParentIDLabel.setFont(font)
         self.putParentIDLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 3px;\n"
-"    color:#000000;}")
+                                            "    border: 2px rounded;\n"
+                                            "    border-color: rgb(57, 57, 57);\n"
+                                            "    border-radius: 8px;\n"
+                                            "    border-style: outset;\n"
+                                            "    background-color: #ffffff;\n"
+                                            "    padding: 3px;\n"
+                                            "    color:#000000;}")
         self.putParentIDLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putParentIDLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putParentIDLabel.setLineWidth(2)
@@ -540,13 +542,13 @@ class Ui_Form(object):
         font.setPointSize(17)
         self.putPriceLabel.setFont(font)
         self.putPriceLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 3px;\n"
-"    color:#000000;}")
+                                         "    border: 2px rounded;\n"
+                                         "    border-color: rgb(57, 57, 57);\n"
+                                         "    border-radius: 8px;\n"
+                                         "    border-style: outset;\n"
+                                         "    background-color: #ffffff;\n"
+                                         "    padding: 3px;\n"
+                                         "    color:#000000;}")
         self.putPriceLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putPriceLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putPriceLabel.setLineWidth(2)
@@ -562,13 +564,13 @@ class Ui_Form(object):
         self.putPayedLabel.setMinimumSize(QtCore.QSize(70, 30))
         self.putPayedLabel.setMaximumSize(QtCore.QSize(70, 30))
         self.putPayedLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: rgb(119, 191, 65);\n"
-"    padding: 5 px;\n"
-"}")
+                                         "    border: 2px rounded;\n"
+                                         "    border-color: rgb(57, 57, 57);\n"
+                                         "    border-radius: 8px;\n"
+                                         "    border-style: outset;\n"
+                                         "    background-color: rgb(119, 191, 65);\n"
+                                         "    padding: 5 px;\n"
+                                         "}")
         self.putPayedLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putPayedLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putPayedLabel.setLineWidth(2)
@@ -596,23 +598,23 @@ class Ui_Form(object):
         font.setPointSize(20)
         self.acceptSearchRequestPushButton.setFont(font)
         self.acceptSearchRequestPushButton.setStyleSheet("QPushButton{\n"
-"    padding: 0px 10px 0px 10px;\n"
-"    background: rgb(163, 111, 61);\n"
-"    color: #232323;\n"
-"    border:1px rounded #232323;\n"
-"    border-radius: 5px;\n"
-"    border-style: outset;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: #e0d1bd;\n"
-"    }\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border-style: inset;\n"
-"    background: rgb(214, 218, 218);\n"
-"    }\n"
-"")
+                                                         "    padding: 0px 10px 0px 10px;\n"
+                                                         "    background: rgb(163, 111, 61);\n"
+                                                         "    color: #232323;\n"
+                                                         "    border:1px rounded #232323;\n"
+                                                         "    border-radius: 5px;\n"
+                                                         "    border-style: outset;\n"
+                                                         "}\n"
+                                                         "\n"
+                                                         "QPushButton:hover {\n"
+                                                         "    background: #e0d1bd;\n"
+                                                         "    }\n"
+                                                         "\n"
+                                                         "QPushButton:pressed {\n"
+                                                         "    border-style: inset;\n"
+                                                         "    background: rgb(214, 218, 218);\n"
+                                                         "    }\n"
+                                                         "")
         self.acceptSearchRequestPushButton.setObjectName("acceptSearchRequestPushButton")
         self.dialogSearchRequestsLayout.addWidget(self.acceptSearchRequestPushButton)
         self.denySearchRequestPushButton = QtWidgets.QPushButton(Form)
@@ -626,22 +628,22 @@ class Ui_Form(object):
         font.setPointSize(20)
         self.denySearchRequestPushButton.setFont(font)
         self.denySearchRequestPushButton.setStyleSheet("QPushButton{\n"
-"    padding: 0px 10px 0px 10px;\n"
-"    background: rgb(230, 230, 230);\n"
-"    color: #232323;\n"
-"    border:1px rounded #232323;\n"
-"    border-radius: 5px;\n"
-"    border-style: outset;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: rgb(255,255,255);\n"
-"    }\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border-style: inset;\n"
-"    background: rgb(214, 218, 218);\n"
-"    }")
+                                                       "    padding: 0px 10px 0px 10px;\n"
+                                                       "    background: rgb(230, 230, 230);\n"
+                                                       "    color: #232323;\n"
+                                                       "    border:1px rounded #232323;\n"
+                                                       "    border-radius: 5px;\n"
+                                                       "    border-style: outset;\n"
+                                                       "}\n"
+                                                       "\n"
+                                                       "QPushButton:hover {\n"
+                                                       "    background: rgb(255,255,255);\n"
+                                                       "    }\n"
+                                                       "\n"
+                                                       "QPushButton:pressed {\n"
+                                                       "    border-style: inset;\n"
+                                                       "    background: rgb(214, 218, 218);\n"
+                                                       "    }")
         self.denySearchRequestPushButton.setObjectName("denySearchRequestPushButton")
         self.dialogSearchRequestsLayout.addWidget(self.denySearchRequestPushButton)
         spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
