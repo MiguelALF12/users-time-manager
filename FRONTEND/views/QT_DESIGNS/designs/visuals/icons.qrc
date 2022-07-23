@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="usedIcons">
+    <file>icons8-gear-24.png</file>
+    <file>icons8-add-24.png</file>
+    <file>icons8-children-30.png</file>
+    <file>icons8-sign-out-30.png</file>
+    <file>icons8-edit-64.png</file>
+    <file>icons8-pen-64.png</file>
+    <file>icons8-search-30.png</file>
+  </qresource>
+</RCC>
