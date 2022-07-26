@@ -9,7 +9,6 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from FRONTEND.views import icons
 from FRONTEND.views.placements import placeholders
 
 class Ui_Form(object):

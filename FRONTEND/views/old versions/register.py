@@ -9,10 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from FRONTEND.views import icons
 from FRONTEND.views.placements import placeholders
 
-class UiForm(object):
+class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1100, 370)
@@ -51,7 +50,7 @@ class UiForm(object):
         sizePolicy.setHeightForWidth(self.line.sizePolicy().hasHeightForWidth())
         self.line.setSizePolicy(sizePolicy)
         self.line.setMinimumSize(QtCore.QSize(995, 5))
-        self.line.setStyleSheet("margin-left:20px;margin-right:20px;")
+        self.line.setStyleSheet("margin-left:20px;margin-right:20px;color:#000000;")
         self.line.setFrameShadow(QtWidgets.QFrame.Plain)
         self.line.setLineWidth(5)
         self.line.setMidLineWidth(0)
@@ -63,7 +62,7 @@ class UiForm(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setRowWrapPolicy(QtWidgets.QFormLayout.WrapLongRows)
-        self.formLayout.setLabelAlignment(QtCore.Qt.AlignLeft)
+        self.formLayout.setLabelAlignment(QtCore.Qt.AlignCenter)
         self.formLayout.setFormAlignment(QtCore.Qt.AlignCenter)
         self.formLayout.setObjectName("formLayout")
         self.nameLabel = QtWidgets.QLabel(Form)
@@ -99,7 +98,7 @@ class UiForm(object):
 "border:2px rounded;\n"
 "border-radius: 10px;\n"
 "border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
+"border-color: rgb(57, 57, 57);"
 "color:#000000;")
         self.nameLineEdit.setFrame(False)
         self.nameLineEdit.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -141,7 +140,7 @@ class UiForm(object):
 "border:2px rounded;\n"
 "border-radius: 10px;\n"
 "border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
+"border-color: rgb(57, 57, 57);"
 "color:#000000;")
         self.braceletNumLineEdit.setFrame(False)
         self.braceletNumLineEdit.setAlignment(QtCore.Qt.AlignCenter)
@@ -153,7 +152,7 @@ class UiForm(object):
         self.formLayout.setItem(2, QtWidgets.QFormLayout.FieldRole, spacerItem)
         self.horizontalLayout.addLayout(self.formLayout)
         self.formLayout_2 = QtWidgets.QFormLayout()
-        self.formLayout_2.setLabelAlignment(QtCore.Qt.AlignLeft)
+        self.formLayout_2.setLabelAlignment(QtCore.Qt.AlignCenter)
         self.formLayout_2.setFormAlignment(QtCore.Qt.AlignCenter)
         self.formLayout_2.setObjectName("formLayout_2")
         self.ParentIDLineEdit = QtWidgets.QLineEdit(Form)
@@ -171,7 +170,7 @@ class UiForm(object):
 "border:2px rounded;\n"
 "border-radius: 10px;\n"
 "border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
+"border-color: rgb(57, 57, 57);"
 "color:#000000;")
         self.ParentIDLineEdit.setFrame(False)
         self.ParentIDLineEdit.setAlignment(QtCore.Qt.AlignCenter)
@@ -227,7 +226,7 @@ class UiForm(object):
 "border:2px rounded;\n"
 "border-radius: 10px;\n"
 "border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
+"border-color: rgb(57, 57, 57);"
 "color:#000000;")
         self.ParentLineEdit.setFrame(False)
         self.ParentLineEdit.setAlignment(QtCore.Qt.AlignCenter)
@@ -251,93 +250,38 @@ class UiForm(object):
         self.parentIDLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.parentIDLabel.setObjectName("parentIDLabel")
         self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.parentIDLabel)
-        self.totalTimeComboBox = QtWidgets.QComboBox(Form)
+        self.totalTimeComboBox_2 = QtWidgets.QComboBox(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.totalTimeComboBox.sizePolicy().hasHeightForWidth())
-        self.totalTimeComboBox.setSizePolicy(sizePolicy)
-        self.totalTimeComboBox.setMinimumSize(QtCore.QSize(130, 22))
-        self.totalTimeComboBox.setMaximumSize(QtCore.QSize(210, 30))
+        sizePolicy.setHeightForWidth(self.totalTimeComboBox_2.sizePolicy().hasHeightForWidth())
+        self.totalTimeComboBox_2.setSizePolicy(sizePolicy)
+        self.totalTimeComboBox_2.setMinimumSize(QtCore.QSize(130, 22))
+        self.totalTimeComboBox_2.setMaximumSize(QtCore.QSize(210, 30))
         font = QtGui.QFont()
         font.setPointSize(17)
-        self.totalTimeComboBox.setFont(font)
-        self.totalTimeComboBox.setMouseTracking(True)
-        self.totalTimeComboBox.setStyleSheet("background: #ffffff;\n"
+        self.totalTimeComboBox_2.setFont(font)
+        self.totalTimeComboBox_2.setMouseTracking(True)
+        self.totalTimeComboBox_2.setStyleSheet("background: #ffffff;\n"
 "border:2px rounded;\n"
 "border-radius: 6px;\n"
 "border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
+"border-color: rgb(57, 57, 57);"
 "color:#000000;")
-        self.totalTimeComboBox.setObjectName("totalTimeComboBox")
-        self.totalTimeComboBox.addItem("")
-        self.totalTimeComboBox.addItem("")
-        self.totalTimeComboBox.addItem("")
-        self.totalTimeComboBox.addItem("")
-        self.totalTimeComboBox.addItem("")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.totalTimeComboBox)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.formLayout_2.setItem(3, QtWidgets.QFormLayout.FieldRole, spacerItem1)
+        self.totalTimeComboBox_2.setObjectName("totalTimeComboBox_2")
+        self.totalTimeComboBox_2.addItem("")
+        self.totalTimeComboBox_2.addItem("")
+        self.totalTimeComboBox_2.addItem("")
+        self.totalTimeComboBox_2.addItem("")
+        self.totalTimeComboBox_2.addItem("")
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.totalTimeComboBox_2)
         self.horizontalLayout.addLayout(self.formLayout_2)
         self.formLayout_3 = QtWidgets.QFormLayout()
-        self.formLayout_3.setLabelAlignment(QtCore.Qt.AlignLeft)
+        self.formLayout_3.setLabelAlignment(QtCore.Qt.AlignCenter)
         self.formLayout_3.setFormAlignment(QtCore.Qt.AlignCenter)
         self.formLayout_3.setObjectName("formLayout_3")
-
-        self.vipUserLabel = QtWidgets.QLabel(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.vipUserLabel.sizePolicy().hasHeightForWidth())
-        self.vipUserLabel.setSizePolicy(sizePolicy)
-        self.vipUserLabel.setMinimumSize(QtCore.QSize(110, 30))
-        font = QtGui.QFont()
-        font.setPointSize(17)
-        font.setBold(True)
-        font.setWeight(75)
-        self.vipUserLabel.setFont(font)
-        self.vipUserLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-                                        "color:#ffffff;")
-        self.vipUserLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.vipUserLabel.setObjectName("vipUserLabel")
-        self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.vipUserLabel)
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.YesVipUserRadioButton = QtWidgets.QRadioButton(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.YesVipUserRadioButton.sizePolicy().hasHeightForWidth())
-        self.YesVipUserRadioButton.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(17)
-        self.YesVipUserRadioButton.setFont(font)
-        self.YesVipUserRadioButton.setStyleSheet("color:#000000;\n"
-                                                 "")
-        self.YesVipUserRadioButton.setCheckable(True)
-        self.YesVipUserRadioButton.setChecked(False)
-        self.YesVipUserRadioButton.setAutoRepeat(False)
-        self.YesVipUserRadioButton.setObjectName("YesVipUserRadioButton")
-        self.horizontalLayout_6.addWidget(self.YesVipUserRadioButton)
-        self.NoVipUserRadioButton = QtWidgets.QRadioButton(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.NoVipUserRadioButton.sizePolicy().hasHeightForWidth())
-        self.NoVipUserRadioButton.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(17)
-        self.NoVipUserRadioButton.setFont(font)
-        self.NoVipUserRadioButton.setStyleSheet("color:#000000;\n"
-                                                "")
-        self.NoVipUserRadioButton.setCheckable(True)
-        self.NoVipUserRadioButton.setChecked(False)
-        self.NoVipUserRadioButton.setAutoRepeat(False)
-        self.NoVipUserRadioButton.setObjectName("NoVipUserRadioButton")
-        self.horizontalLayout_6.addWidget(self.NoVipUserRadioButton)
-        self.formLayout_3.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_6)
-
-
+        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.formLayout_3.setItem(2, QtWidgets.QFormLayout.FieldRole, spacerItem1)
         self.putPriceLabel = QtWidgets.QLabel(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -356,14 +300,36 @@ class UiForm(object):
 "    border-style: outset;\n"
 "    background-color: #ffffff;\n"
 "    padding: 5 px;\n"
-"    color:#000000;\n"
-"}")
+"    color:#000000;}")
         self.putPriceLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putPriceLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putPriceLabel.setLineWidth(2)
         self.putPriceLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.putPriceLabel.setObjectName("putPriceLabel")
         self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.putPriceLabel)
+        self.putPayedLabel = QtWidgets.QLabel(Form)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.putPayedLabel.sizePolicy().hasHeightForWidth())
+        self.putPayedLabel.setSizePolicy(sizePolicy)
+        self.putPayedLabel.setMinimumSize(QtCore.QSize(70, 30))
+        self.putPayedLabel.setMaximumSize(QtCore.QSize(70, 30))
+        self.putPayedLabel.setStyleSheet("QLabel {\n"
+"    border: 2px rounded;\n"
+"    border-color: rgb(57, 57, 57);\n"
+"    border-radius: 8px;\n"
+"    border-style: outset;\n"
+"    background-color: rgb(119, 191, 65);\n"
+"    padding: 5 px;\n"
+"    color:#000000;}")
+        self.putPayedLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.putPayedLabel.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.putPayedLabel.setLineWidth(2)
+        self.putPayedLabel.setText("")
+        self.putPayedLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.putPayedLabel.setObjectName("putPayedLabel")
+        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.putPayedLabel)
         self.priceLabel = QtWidgets.QLabel(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -399,48 +365,13 @@ class UiForm(object):
         self.payedLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.payedLabel.setObjectName("payedLabel")
         self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.payedLabel)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.YesPayedRadioButton = QtWidgets.QRadioButton(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.YesPayedRadioButton.sizePolicy().hasHeightForWidth())
-        self.YesPayedRadioButton.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(17)
-        self.YesPayedRadioButton.setFont(font)
-        self.YesPayedRadioButton.setStyleSheet("color:#000000;\n"
-"")
-        self.YesPayedRadioButton.setCheckable(True)
-        self.YesPayedRadioButton.setChecked(False)
-        self.YesPayedRadioButton.setAutoRepeat(False)
-        self.YesPayedRadioButton.setObjectName("YesPayedRadioButton")
-        self.horizontalLayout_3.addWidget(self.YesPayedRadioButton)
-        self.NoPayedRadioButton = QtWidgets.QRadioButton(Form)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.NoPayedRadioButton.sizePolicy().hasHeightForWidth())
-        self.NoPayedRadioButton.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setPointSize(17)
-        self.NoPayedRadioButton.setFont(font)
-        self.NoPayedRadioButton.setStyleSheet("color:#000000;\n"
-"")
-        self.NoPayedRadioButton.setCheckable(True)
-        self.NoPayedRadioButton.setChecked(False)
-        self.NoPayedRadioButton.setAutoRepeat(False)
-        self.NoPayedRadioButton.setObjectName("NoPayedRadioButton")
-        self.horizontalLayout_3.addWidget(self.NoPayedRadioButton)
-        self.formLayout_3.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_3)
         self.horizontalLayout.addLayout(self.formLayout_3)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setSpacing(30)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem3 = QtWidgets.QSpacerItem(40, 10, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem3)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 10, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem2)
         self.acceptRegisterRequestPushButton = QtWidgets.QPushButton(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -499,12 +430,12 @@ class UiForm(object):
 "    }")
         self.denyRegisterRequestPushButton.setObjectName("denyRegisterRequestPushButton")
         self.horizontalLayout_2.addWidget(self.denyRegisterRequestPushButton)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem4)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem3)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
         self.retranslateUi(Form)
-        self.totalTimeComboBox.setCurrentIndex(0)
+        self.totalTimeComboBox_2.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -512,33 +443,28 @@ class UiForm(object):
         Form.setWindowTitle(_translate("Form", "REGISTRAR USUARIO"))
         self.registerUserLabel.setText(_translate("Form", "REGISTRAR USUARIO"))
         self.nameLabel.setText(_translate("Form", "Nombre"))
-        self.nameLineEdit.setToolTip(_translate("Form", "Nombre de usuario"))
+        self.nameLineEdit.setToolTip(_translate("Form", "Total de personas"))
         self.nameLineEdit.setPlaceholderText(_translate("Form", placeholders['PH_NAME']))
         self.braceletNumLabel.setText(_translate("Form", "Número de manilla"))
-        self.braceletNumLineEdit.setToolTip(_translate("Form", "numero de manilla"))
+        self.braceletNumLineEdit.setToolTip(_translate("Form", "Identificador físico"))
         self.braceletNumLineEdit.setPlaceholderText(_translate("Form", placeholders['PH_BRACELET_NUMBER']))
-        self.ParentIDLineEdit.setToolTip(_translate("Form", "Cedula de acudiente"))
+        self.ParentIDLineEdit.setToolTip(_translate("Form", "Total de personas"))
         self.ParentIDLineEdit.setPlaceholderText(_translate("Form", placeholders['PH_PARENT_ID']))
         self.totalTimeLabel.setText(_translate("Form", "Tiempo"))
         self.parentLabel.setText(_translate("Form", "Acudiente"))
-        self.ParentLineEdit.setToolTip(_translate("Form", "nombre de acudiente"))
+        self.ParentLineEdit.setToolTip(_translate("Form", "Total de personas"))
         self.ParentLineEdit.setPlaceholderText(_translate("Form", placeholders['PH_PARENT']))
         self.parentIDLabel.setText(_translate("Form", "Acudiente-ID"))
-        self.totalTimeComboBox.setCurrentText(_translate("Form", "Seleccione"))
-        self.totalTimeComboBox.setItemText(0, _translate("Form", "Seleccione"))
-        self.totalTimeComboBox.setItemText(1, _translate("Form", "New Item"))
-        self.totalTimeComboBox.setItemText(2, _translate("Form", "New Item"))
-        self.totalTimeComboBox.setItemText(3, _translate("Form", "New Item"))
-        self.totalTimeComboBox.setItemText(4, _translate("Form", "New Item"))
-        self.ParentLineEdit.setPlaceholderText(_translate("Form", placeholders['PH_PARENT']))
-        self.priceLabel.setText(_translate("Form", "Valor total a pagar"))
+        #TODO Determine what are the options available to choose in terms of time
+        self.totalTimeComboBox_2.setCurrentText(_translate("Form", "Seleccione"))
+        self.totalTimeComboBox_2.setItemText(0, _translate("Form", "Seleccione"))
+        self.totalTimeComboBox_2.setItemText(1, _translate("Form", "New Item"))
+        self.totalTimeComboBox_2.setItemText(2, _translate("Form", "New Item"))
+        self.totalTimeComboBox_2.setItemText(3, _translate("Form", "New Item"))
+        self.totalTimeComboBox_2.setItemText(4, _translate("Form", "New Item"))
         self.putPriceLabel.setText(_translate("Form", placeholders['PH_TOTAL_MONEY']))
+        self.priceLabel.setText(_translate("Form", "Valor total a pagar"))
         self.payedLabel.setText(_translate("Form", "Cancelado"))
-        self.YesPayedRadioButton.setText(_translate("Form", "SI"))
-        self.NoPayedRadioButton.setText(_translate("Form", "NO"))
-        self.vipUserLabel.setText(_translate("Form", "Usuario VIP"))
-        self.YesVipUserRadioButton.setText(_translate("Form", "SI"))
-        self.NoVipUserRadioButton.setText(_translate("Form", "NO"))
         self.acceptRegisterRequestPushButton.setText(_translate("Form", "Aceptar"))
         self.denyRegisterRequestPushButton.setText(_translate("Form", "Cancelar"))
 
@@ -547,4 +473,3 @@ class UiForm(object):
         # self.registerWidgetInstance.setWindowIcon(QtGui.QIcon(":/images/fact.png"))
         self.setupUi(self.registerWidgetInstance)
         self.registerWidgetInstance.show()
-

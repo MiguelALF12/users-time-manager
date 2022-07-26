@@ -114,7 +114,7 @@
         <enum>QFormLayout::WrapLongRows</enum>
        </property>
        <property name="labelAlignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
        <property name="formAlignment">
         <set>Qt::AlignCenter</set>
@@ -191,7 +191,8 @@ color:#ffffff;</string>
 border:2px rounded;
 border-radius: 10px;
 border-style: outset;
-border-color: rgb(57, 57, 57);</string>
+border-color: rgb(57, 57, 57);
+color:#0000000;</string>
          </property>
          <property name="frame">
           <bool>false</bool>
@@ -285,7 +286,8 @@ color:#ffffff;</string>
 border:2px rounded;
 border-radius: 10px;
 border-style: outset;
-border-color: rgb(57, 57, 57);</string>
+border-color: rgb(57, 57, 57);
+color:#000000;</string>
          </property>
          <property name="frame">
           <bool>false</bool>
@@ -322,7 +324,7 @@ border-color: rgb(57, 57, 57);</string>
      <item>
       <layout class="QFormLayout" name="formLayout_2">
        <property name="labelAlignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
        <property name="formAlignment">
         <set>Qt::AlignCenter</set>
@@ -363,7 +365,8 @@ border-color: rgb(57, 57, 57);</string>
 border:2px rounded;
 border-radius: 10px;
 border-style: outset;
-border-color: rgb(57, 57, 57);</string>
+border-color: rgb(57, 57, 57);
+color:#000000;</string>
          </property>
          <property name="frame">
           <bool>false</bool>
@@ -484,7 +487,8 @@ color:#ffffff;</string>
 border:2px rounded;
 border-radius: 10px;
 border-style: outset;
-border-color: rgb(57, 57, 57);</string>
+border-color: rgb(57, 57, 57);
+color:#000000;</string>
          </property>
          <property name="frame">
           <bool>false</bool>
@@ -537,7 +541,7 @@ color:#ffffff;</string>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QComboBox" name="totalTimeComboBox_2">
+        <widget class="QComboBox" name="totalTimeComboBox">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -569,7 +573,8 @@ color:#ffffff;</string>
 border:2px rounded;
 border-radius: 6px;
 border-style: outset;
-border-color: rgb(57, 57, 57);</string>
+border-color: rgb(57, 57, 57);
+color:#000000;</string>
          </property>
          <property name="currentText">
           <string>Seleccione</string>
@@ -625,129 +630,11 @@ border-color: rgb(57, 57, 57);</string>
      <item>
       <layout class="QFormLayout" name="formLayout_3">
        <property name="labelAlignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
        <property name="formAlignment">
         <set>Qt::AlignCenter</set>
        </property>
-       <item row="2" column="1">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="putPriceLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>130</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>130</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>17</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {
-    border: 2px rounded;
-	border-color: rgb(57, 57, 57);
-    border-radius: 8px;
-    border-style: outset;
-    background-color: #ffffff;
-	padding: 5 px;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
-         </property>
-         <property name="lineWidth">
-          <number>2</number>
-         </property>
-         <property name="text">
-          <string>$0</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="margin">
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="putPayedLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {
-    border: 2px rounded;
-	border-color: rgb(57, 57, 57);
-    border-radius: 8px;
-    border-style: outset;
-    background-color: rgb(119, 191, 65);
-	padding: 5 px;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
-         </property>
-         <property name="lineWidth">
-          <number>2</number>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="margin">
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="priceLabel">
          <property name="sizePolicy">
@@ -787,6 +674,62 @@ color:#ffffff;</string>
          </property>
         </widget>
        </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="putPriceLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>130</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>130</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    border: 2px rounded;
+	border-color: rgb(57, 57, 57);
+    border-radius: 8px;
+    border-style: outset;
+    background-color: #ffffff;
+	padding: 5 px;
+	color:#000000;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>2</number>
+         </property>
+         <property name="text">
+          <string>$0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="0">
         <widget class="QLabel" name="payedLabel">
          <property name="sizePolicy">
@@ -822,6 +765,85 @@ color:#ffffff;</string>
           <number>3</number>
          </property>
         </widget>
+       </item>
+       <item row="1" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QRadioButton" name="YesPayedRadioButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>17</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color:#000000;
+</string>
+           </property>
+           <property name="text">
+            <string>SI</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="NoPayedRadioButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>17</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color:#000000;
+</string>
+           </property>
+           <property name="text">
+            <string>NO</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="1">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>

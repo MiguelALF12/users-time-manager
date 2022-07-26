@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/miguellopez/Desktop/PROYECTS/PAGOS/ARENERO-RAMIRO/FRONTEND/views/QT_DESIGNS/designs/main.ui'
+# Form implementation generated from reading ui file
+# '../FRONTEND/views/QT_DESIGNS/designs/main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -9,10 +10,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from FRONTEND.views import icons
-from FRONTEND.views import register
+# from FRONTEND.views import edit, evacuate, register, search
 from FRONTEND.views.placements import placeholders
-
 
 
 class UiMainWindow(object):
@@ -25,7 +24,11 @@ class UiMainWindow(object):
         font.setPointSize(18)
         mainWindow.setFont(font)
         mainWindow.setStyleSheet("background: #ffe483;")
-        mainWindow.setDockOptions(QtWidgets.QMainWindow.AllowTabbedDocks|QtWidgets.QMainWindow.AnimatedDocks|QtWidgets.QMainWindow.GroupedDragging|QtWidgets.QMainWindow.VerticalTabs)
+        mainWindow.setDockOptions(
+            QtWidgets.QMainWindow.AllowTabbedDocks |
+            QtWidgets.QMainWindow.AnimatedDocks |
+            QtWidgets.QMainWindow.GroupedDragging |
+            QtWidgets.QMainWindow.VerticalTabs)
         mainWindow.setUnifiedTitleAndToolBarOnMac(True)
         self.centralwidget = QtWidgets.QWidget(mainWindow)
         font = QtGui.QFont()
@@ -43,7 +46,6 @@ class UiMainWindow(object):
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.searchRecordContainerLayout.addItem(spacerItem1)
         self.searchRecordLayout = QtWidgets.QHBoxLayout()
-        self.searchRecordLayout.setSpacing(20)
         self.searchRecordLayout.setObjectName("searchRecordLayout")
         self.searchLineEdit = QtWidgets.QLineEdit(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -56,53 +58,24 @@ class UiMainWindow(object):
         self.searchLineEdit.setMouseTracking(True)
         self.searchLineEdit.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.searchLineEdit.setStyleSheet("QLineEdit{\n"
-"    background-color: #ffffff;\n"
-"    border: 1px rounded #232323;\n"
-"    border-radius: 12px;\n"
-"    border-style: outset;\n"
-"    font-family: \"Helvetica\";\n"
-"    font-weight: 400;\n"
-"    font-size: 18px;\n"
-"    text-align: left;\n"
-"padding-left: 10px;\n"
-"color:#000000;\n"
-"}\n"
-"\n"
-"")
+                                          "    background-color: #ffffff;\n"
+                                          "    border: 1px rounded #232323;\n"
+                                          "    border-radius: 12px;\n"
+                                          "    border-style: outset;\n"
+                                          "    font-family: \"Helvetica\";\n"
+                                          "    font-weight: 400;\n"
+                                          "    font-size: 18px;\n"
+                                          "    text-align: left;\n"
+                                          "padding-left: 10px;\n"
+                                          "color:#000000;}\n"
+                                          "\n"
+                                          "")
         self.searchLineEdit.setText("")
         self.searchLineEdit.setFrame(False)
         self.searchLineEdit.setReadOnly(False)
         self.searchLineEdit.setClearButtonEnabled(True)
         self.searchLineEdit.setObjectName("searchLineEdit")
         self.searchRecordLayout.addWidget(self.searchLineEdit)
-        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.comboBox.sizePolicy().hasHeightForWidth())
-        self.comboBox.setSizePolicy(sizePolicy)
-        self.comboBox.setMinimumSize(QtCore.QSize(140, 32))
-        self.comboBox.setMaximumSize(QtCore.QSize(140, 32))
-        self.comboBox.setStyleSheet("QComboBox {\n"
-"    border: 2px rounded;\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;   \n"
-"    border-color: rgb(57, 57, 57);\n"
-"    padding: 5px 18px 5px 5px;   \n"
-"    background-color:#ffffff;\n"
-"     color:#000000;\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item{\n"
-"    background-color: #ffffff; \n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item:hover {\n"
-"    color: #ffffff;\n"
-"}")
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.searchRecordLayout.addWidget(self.comboBox)
         self.searchRecordPushButton = QtWidgets.QPushButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -117,22 +90,22 @@ class UiMainWindow(object):
         font.setWeight(75)
         self.searchRecordPushButton.setFont(font)
         self.searchRecordPushButton.setStyleSheet("QPushButton{\n"
-"    padding: 0px 10px 0px 10px;\n"
-"    background: rgb(87, 197, 255);\n"
-"    color: #ffffff;\n"
-"    border:1px rounded #232323;\n"
-"    border-radius: 10px;\n"
-"    border-style: outset;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: rgb(77, 123, 248);\n"
-"    }\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border-style: inset;\n"
-"    background: rgb(214, 218, 218);\n"
-"    }")
+                                                  "    padding: 0px 10px 0px 10px;\n"
+                                                  "    background: rgb(87, 197, 255);\n"
+                                                  "    color: #ffffff;\n"
+                                                  "    border:1px rounded #232323;\n"
+                                                  "    border-radius: 10px;\n"
+                                                  "    border-style: outset;\n"
+                                                  "}\n"
+                                                  "\n"
+                                                  "QPushButton:hover {\n"
+                                                  "    background: rgb(77, 123, 248);\n"
+                                                  "    }\n"
+                                                  "\n"
+                                                  "QPushButton:pressed {\n"
+                                                  "    border-style: inset;\n"
+                                                  "    background: rgb(214, 218, 218);\n"
+                                                  "    }")
         self.searchRecordPushButton.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/usedIcons/icons8-children-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -162,12 +135,13 @@ class UiMainWindow(object):
         font.setWeight(50)
         self.crudLabel_2.setFont(font)
         self.crudLabel_2.setStyleSheet("background:#ffffff;\n"
-"border:1px rounded;\n"
-"border-radius: 10px;\n"
-"color:#000000;")
+                                       "border:1px rounded;\n"
+                                       "border-radius: 10px;\n"
+                                       "color:#000000;")
         self.crudLabel_2.setMidLineWidth(-1)
         self.crudLabel_2.setAlignment(QtCore.Qt.AlignCenter)
         self.crudLabel_2.setWordWrap(True)
+        self.crudLabel_2.setText("ADICIONAR - BUSCAR - MANIPULAR REGISTROS POR INDEPENDIENTE")
         self.crudLabel_2.setObjectName("crudLabel_2")
         self.horizontalLayout_2.addWidget(self.crudLabel_2)
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -184,28 +158,58 @@ class UiMainWindow(object):
         self.crud_recordPushButton.setMinimumSize(QtCore.QSize(113, 32))
         self.crud_recordPushButton.setMaximumSize(QtCore.QSize(113, 32))
         self.crud_recordPushButton.setStyleSheet("QPushButton{\n"
-"    padding: 0px 10px 0px 10px;\n"
-"    background: #e0d1bd;\n"
-"    color: #232323;\n"
-"    border:1px rounded #232323;\n"
-"    border-radius: 10px;\n"
-"    border-style: outset;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color:rgb(187, 179, 155);\n"
-"    }\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border-style: inset;\n"
-"    background: rgb(214, 218, 218);\n"
-"    }")
+                                                 "    padding: 0px 10px 0px 10px;\n"
+                                                 "    background: #e0d1bd;\n"
+                                                 "    color: #232323;\n"
+                                                 "    border:1px rounded #232323;\n"
+                                                 "    border-radius: 10px;\n"
+                                                 "    border-style: outset;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QPushButton:hover {\n"
+                                                 "    background-color:rgb(187, 179, 155);\n"
+                                                 "    }\n"
+                                                 "\n"
+                                                 "QPushButton:pressed {\n"
+                                                 "    border-style: inset;\n"
+                                                 "    background: rgb(214, 218, 218);\n"
+                                                 "    }")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/usedIcons/icons8-pen-64.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.crud_recordPushButton.setIcon(icon1)
         self.crud_recordPushButton.setIconSize(QtCore.QSize(20, 20))
         self.crud_recordPushButton.setObjectName("crud_recordPushButton")
         self.crudLayout.addWidget(self.crud_recordPushButton)
+        self.crud_searchPushButton = QtWidgets.QPushButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.crud_searchPushButton.sizePolicy().hasHeightForWidth())
+        self.crud_searchPushButton.setSizePolicy(sizePolicy)
+        self.crud_searchPushButton.setMinimumSize(QtCore.QSize(95, 32))
+        self.crud_searchPushButton.setMaximumSize(QtCore.QSize(95, 32))
+        self.crud_searchPushButton.setStyleSheet("QPushButton{\n"
+                                                 "    padding: 0px 10px 0px 10px;\n"
+                                                 "    background: #e0d1bd;\n"
+                                                 "    color: #232323;\n"
+                                                 "    border:1px rounded #232323;\n"
+                                                 "    border-radius: 10px;\n"
+                                                 "    border-style: outset;\n"
+                                                 "}\n"
+                                                 "\n"
+                                                 "QPushButton:hover {\n"
+                                                 "    background-color:rgb(187, 179, 155);\n"
+                                                 "    }\n"
+                                                 "\n"
+                                                 "QPushButton:pressed {\n"
+                                                 "    border-style: inset;\n"
+                                                 "    background: rgb(214, 218, 218);\n"
+                                                 "    }")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/usedIcons/icons8-search-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.crud_searchPushButton.setIcon(icon2)
+        self.crud_searchPushButton.setObjectName("crud_searchPushButton")
+        self.crudLayout.addWidget(self.crud_searchPushButton)
         self.crud_editPushButton = QtWidgets.QPushButton(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -215,25 +219,25 @@ class UiMainWindow(object):
         self.crud_editPushButton.setMinimumSize(QtCore.QSize(95, 32))
         self.crud_editPushButton.setMaximumSize(QtCore.QSize(95, 32))
         self.crud_editPushButton.setStyleSheet("QPushButton{\n"
-"    padding: 0px 10px 0px 10px;\n"
-"    background: #e0d1bd;\n"
-"    color: #232323;\n"
-"    border:1px rounded #232323;\n"
-"    border-radius: 10px;\n"
-"    border-style: outset;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color:rgb(187, 179, 155);\n"
-"    }\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border-style: inset;\n"
-"    background: rgb(214, 218, 218);\n"
-"    }")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/usedIcons/icons8-edit-64.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.crud_editPushButton.setIcon(icon2)
+                                               "    padding: 0px 10px 0px 10px;\n"
+                                               "    background: #e0d1bd;\n"
+                                               "    color: #232323;\n"
+                                               "    border:1px rounded #232323;\n"
+                                               "    border-radius: 10px;\n"
+                                               "    border-style: outset;\n"
+                                               "}\n"
+                                               "\n"
+                                               "QPushButton:hover {\n"
+                                               "    background-color:rgb(187, 179, 155);\n"
+                                               "    }\n"
+                                               "\n"
+                                               "QPushButton:pressed {\n"
+                                               "    border-style: inset;\n"
+                                               "    background: rgb(214, 218, 218);\n"
+                                               "    }")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/usedIcons/icons8-edit-64.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.crud_editPushButton.setIcon(icon3)
         self.crud_editPushButton.setIconSize(QtCore.QSize(18, 18))
         self.crud_editPushButton.setObjectName("crud_editPushButton")
         self.crudLayout.addWidget(self.crud_editPushButton)
@@ -256,19 +260,19 @@ class UiMainWindow(object):
         self.recordsTableWidget.setMinimumSize(QtCore.QSize(1195, 370))
         self.recordsTableWidget.setAutoFillBackground(True)
         self.recordsTableWidget.setStyleSheet("::section{\n"
-"    background-color: rgb(187, 80, 35);\n"
-"    color:rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QTableWidget{\n"
-"    font-size: 15pt \".AppleSystemUIFont\";\n"
-"    background-color: rgb(255, 255, 255);\n"
-"}")
+                                              "    background-color: rgb(187, 80, 35);\n"
+                                              "    color:rgb(255, 255, 255);\n"
+                                              "}\n"
+                                              "\n"
+                                              "QTableWidget{\n"
+                                              "    font-size: 15pt \".AppleSystemUIFont\";\n"
+                                              "    background-color: rgb(255, 255, 255);\n"
+                                              "}")
         self.recordsTableWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.recordsTableWidget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.recordsTableWidget.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContentsOnFirstShow)
         self.recordsTableWidget.setAutoScroll(True)
-        self.recordsTableWidget.setEditTriggers(QtWidgets.QAbstractItemView.EditKeyPressed)
+        self.recordsTableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.recordsTableWidget.setTabKeyNavigation(False)
         self.recordsTableWidget.setProperty("showDropIndicator", False)
         self.recordsTableWidget.setDragDropOverwriteMode(False)
@@ -280,7 +284,7 @@ class UiMainWindow(object):
         self.recordsTableWidget.setGridStyle(QtCore.Qt.SolidLine)
         self.recordsTableWidget.setWordWrap(True)
         self.recordsTableWidget.setCornerButtonEnabled(False)
-        self.recordsTableWidget.setColumnCount(10)
+        self.recordsTableWidget.setColumnCount(8)
         self.recordsTableWidget.setObjectName("recordsTableWidget")
         self.recordsTableWidget.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
@@ -385,30 +389,6 @@ class UiMainWindow(object):
         item.setForeground(brush)
         self.recordsTableWidget.setHorizontalHeaderItem(7, item)
         item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        font.setBold(True)
-        font.setWeight(75)
-        item.setFont(font)
-        item.setBackground(QtGui.QColor(187, 80, 35))
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        item.setForeground(brush)
-        self.recordsTableWidget.setHorizontalHeaderItem(8, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        font.setBold(True)
-        font.setWeight(75)
-        item.setFont(font)
-        item.setBackground(QtGui.QColor(187, 80, 35))
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        item.setForeground(brush)
-        self.recordsTableWidget.setHorizontalHeaderItem(9, item)
-        item = QtWidgets.QTableWidgetItem()
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         item.setBackground(brush)
@@ -456,23 +436,17 @@ class UiMainWindow(object):
         brush.setStyle(QtCore.Qt.Dense2Pattern)
         item.setForeground(brush)
         self.recordsTableWidget.setItem(0, 7, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.recordsTableWidget.setItem(0, 8, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignVCenter)
-        self.recordsTableWidget.setItem(0, 9, item)
         self.recordsTableWidget.horizontalHeader().setVisible(True)
         self.recordsTableWidget.horizontalHeader().setCascadingSectionResizes(True)
         self.recordsTableWidget.horizontalHeader().setDefaultSectionSize(190)
-        self.recordsTableWidget.horizontalHeader().setHighlightSections(False)
+        self.recordsTableWidget.horizontalHeader().setHighlightSections(True)
         self.recordsTableWidget.horizontalHeader().setMinimumSectionSize(190)
         self.recordsTableWidget.horizontalHeader().setSortIndicatorShown(False)
         self.recordsTableWidget.horizontalHeader().setStretchLastSection(True)
         self.recordsTableWidget.verticalHeader().setVisible(True)
         self.recordsTableWidget.verticalHeader().setCascadingSectionResizes(True)
         self.recordsTableWidget.verticalHeader().setDefaultSectionSize(39)
-        self.recordsTableWidget.verticalHeader().setMinimumSectionSize(39)
+        self.recordsTableWidget.verticalHeader().setMinimumSectionSize(30)
         self.recordsTableWidget.verticalHeader().setSortIndicatorShown(False)
         self.recordsTableWidget.verticalHeader().setStretchLastSection(False)
         self.horizontalLayout.addWidget(self.recordsTableWidget)
@@ -495,8 +469,8 @@ class UiMainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(17)
         self.totalPeopleLabel.setFont(font)
-        self.totalPeopleLabel.setStyleSheet("background:#ffffff;\n"
-"color:#000000;")
+        # self.totalPeopleLabel.setText('salk')
+        self.totalPeopleLabel.setStyleSheet("background:#ffffff;color:#000000;")
         self.totalPeopleLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.totalPeopleLabel.setObjectName("totalPeopleLabel")
         self.totalPeopleLayout.addWidget(self.totalPeopleLabel)
@@ -512,14 +486,13 @@ class UiMainWindow(object):
         font.setPointSize(19)
         self.putTotalPeopleLabel.setFont(font)
         self.putTotalPeopleLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 5 px;\n"
-"    color:#000000;\n"
-"}")
+                                               "    border: 2px rounded;\n"
+                                               "    border-color: rgb(57, 57, 57);\n"
+                                               "    border-radius: 8px;\n"
+                                               "    border-style: outset;\n"
+                                               "    background-color: #ffffff;\n"
+                                               "    padding: 5 px;\n"
+                                               "color:#000000;}")
         self.putTotalPeopleLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putTotalPeopleLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putTotalPeopleLabel.setLineWidth(2)
@@ -541,25 +514,25 @@ class UiMainWindow(object):
         font.setPointSize(15)
         self.evacuatePushButton.setFont(font)
         self.evacuatePushButton.setStyleSheet("QPushButton{\n"
-"    padding: 0px 10px 0px 10px;\n"
-"    background: rgb(252, 71, 31);\n"
-"    color: #ffffff;\n"
-"    border:1px rounded #232323;\n"
-"    border-radius: 10px;\n"
-"    border-style: outset;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: rgb(228, 37, 15);\n"
-"    }\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border-style: inset;\n"
-"    background: rgb(214, 218, 218);\n"
-"    }")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/usedIcons/icons8-sign-out-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.evacuatePushButton.setIcon(icon3)
+                                              "    padding: 0px 10px 0px 10px;\n"
+                                              "    background: rgb(252, 71, 31);\n"
+                                              "    color: #ffffff;\n"
+                                              "    border:1px rounded #232323;\n"
+                                              "    border-radius: 10px;\n"
+                                              "    border-style: outset;\n"
+                                              "}\n"
+                                              "\n"
+                                              "QPushButton:hover {\n"
+                                              "    background: rgb(228, 37, 15);\n"
+                                              "    }\n"
+                                              "\n"
+                                              "QPushButton:pressed {\n"
+                                              "    border-style: inset;\n"
+                                              "    background: rgb(214, 218, 218);\n"
+                                              "    }")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/usedIcons/icons8-sign-out-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.evacuatePushButton.setIcon(icon4)
         self.evacuatePushButton.setIconSize(QtCore.QSize(18, 18))
         self.evacuatePushButton.setObjectName("evacuatePushButton")
         self.footerLayout.addWidget(self.evacuatePushButton)
@@ -579,8 +552,7 @@ class UiMainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(17)
         self.totalMoneyLabel.setFont(font)
-        self.totalMoneyLabel.setStyleSheet("background:#ffffff;\n"
-"color:#000000;")
+        self.totalMoneyLabel.setStyleSheet("background:#ffffff;color:#000000;")
         self.totalMoneyLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.totalMoneyLabel.setObjectName("totalMoneyLabel")
         self.totalMoneyLayout.addWidget(self.totalMoneyLabel)
@@ -596,14 +568,13 @@ class UiMainWindow(object):
         font.setPointSize(19)
         self.putTotalMoneyLabel.setFont(font)
         self.putTotalMoneyLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 5 px;\n"
-"    color:#000000;\n"
-"}")
+                                              "    border: 2px rounded;\n"
+                                              "    border-color: rgb(57, 57, 57);\n"
+                                              "    border-radius: 8px;\n"
+                                              "    border-style: outset;\n"
+                                              "    background-color: #ffffff;\n"
+                                              "    padding: 5 px;\n"
+                                              "color:#000000;}")
         self.putTotalMoneyLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putTotalMoneyLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putTotalMoneyLabel.setLineWidth(2)
@@ -624,23 +595,26 @@ class UiMainWindow(object):
 
         # Connecting buttons with pages
         self.crud_recordPushButton.clicked.connect(self.launchRegister)
-        # self.crud_editPushButton.clicked.connect(self.launchEdit)
-        # self.evacuatePushButton.clicked.connect(self.launchEvacuate)
+        self.crud_searchPushButton.clicked.connect(self.launchSearch)
+        self.crud_editPushButton.clicked.connect(self.launchEdit)
+        self.evacuatePushButton.clicked.connect(self.launchEvacuate)
 
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "Arenero PlayKids "))
         mainWindow.setToolTip(_translate("mainWindow", "Dinero Total"))
         self.searchLineEdit.setPlaceholderText(_translate("mainWindow", placeholders['PH_SEARCH_RECORD']))
-        self.comboBox.setItemText(0, _translate("mainWindow", "Seleccionar"))
         self.crudLabel_2.setToolTip(_translate("mainWindow", "Opciones para registros independientes"))
-        self.crudLabel_2.setText(_translate("mainWindow", "MANIPULAR USUARIOS REGISTRADOS"))
+        self.crudLabel_2.setText(_translate("mainWindow", "ADICIONAR - BUSCAR - MANIPULAR REGISTROS POR INDEPENDIENTE"))
         self.crud_recordPushButton.setToolTip(_translate("mainWindow", "Registrar usuario"))
         self.crud_recordPushButton.setText(_translate("mainWindow", "REGISTRAR"))
+        self.crud_searchPushButton.setToolTip(_translate("mainWindow", "Buscar usuario"))
+        self.crud_searchPushButton.setText(_translate("mainWindow", "BUSCAR"))
         self.crud_editPushButton.setToolTip(_translate("mainWindow", "Editar"))
         self.crud_editPushButton.setText(_translate("mainWindow", "EDITAR"))
         self.recordsTableWidget.setToolTip(_translate("mainWindow", "Usarios ingresados al arenero"))
-        self.recordsTableWidget.setSortingEnabled(False)
+        self.recordsTableWidget.setSortingEnabled(True)
+        # Row as example of how a user's record should be
         item = self.recordsTableWidget.verticalHeaderItem(0)
         item.setText(_translate("mainWindow", "1"))
         item = self.recordsTableWidget.horizontalHeaderItem(0)
@@ -650,19 +624,15 @@ class UiMainWindow(object):
         item = self.recordsTableWidget.horizontalHeaderItem(2)
         item.setText(_translate("mainWindow", "Tiempo"))
         item = self.recordsTableWidget.horizontalHeaderItem(3)
-        item.setText(_translate("mainWindow", "Hora de entrada"))
+        item.setText(_translate("mainWindow", "Tiempo extra"))
         item = self.recordsTableWidget.horizontalHeaderItem(4)
-        item.setText(_translate("mainWindow", "Hora estimada de salida"))
+        item.setText(_translate("mainWindow", "Hora de entrada"))
         item = self.recordsTableWidget.horizontalHeaderItem(5)
         item.setText(_translate("mainWindow", "Sale"))
         item = self.recordsTableWidget.horizontalHeaderItem(6)
         item.setText(_translate("mainWindow", "Valor a pagar"))
         item = self.recordsTableWidget.horizontalHeaderItem(7)
         item.setText(_translate("mainWindow", "Cancelado"))
-        item = self.recordsTableWidget.horizontalHeaderItem(8)
-        item.setText(_translate("mainWindow", "Acudiente"))
-        item = self.recordsTableWidget.horizontalHeaderItem(9)
-        item.setText(_translate("mainWindow", "Acudiente-ID"))
         __sortingEnabled = self.recordsTableWidget.isSortingEnabled()
         self.recordsTableWidget.setSortingEnabled(False)
         item = self.recordsTableWidget.item(0, 0)
@@ -677,10 +647,6 @@ class UiMainWindow(object):
         item.setText(_translate("mainWindow", "00:00"))
         item = self.recordsTableWidget.item(0, 6)
         item.setText(_translate("mainWindow", "$0"))
-        item = self.recordsTableWidget.item(0, 8)
-        item.setText(_translate("mainWindow", "Lina Fernandez"))
-        item = self.recordsTableWidget.item(0, 9)
-        item.setText(_translate("mainWindow", "1004718953"))
         self.recordsTableWidget.setSortingEnabled(__sortingEnabled)
         self.totalPeopleLabel.setText(_translate("mainWindow", "Total de personas"))
         self.putTotalPeopleLabel.setText(_translate("mainWindow", placeholders['PH_TOTAL_USERS']))
@@ -689,9 +655,9 @@ class UiMainWindow(object):
         self.totalMoneyLabel.setText(_translate("mainWindow", "Dinero total"))
         self.putTotalMoneyLabel.setText(_translate("mainWindow", placeholders['PH_TOTAL_MONEY']))
 
-    def launchRegister(self):
-        self.viewRegister = register.UiForm()
-        self.viewRegister.showRegister()
+    # def launchRegister(self):
+    #     self.viewRegister = register.Ui_Form()
+    #     self.viewRegister.showRegister()
     #
     # def launchSearch(self):
     #     self.viewSearch = search.Ui_Form()
@@ -704,8 +670,3 @@ class UiMainWindow(object):
     # def launchEvacuate(self):
     #     self.viewEvacuate = evacuate.Ui_Form()
     #     self.viewEvacuate.showEvacuate()
-
-# TODO fix style of cells on register users's table
-# TODO fix someway the recommended Typos and PEP highlights
-# TODO put a comboBox or something to allow change cancelado options
-# pyrcc5 /Users/miguellopez/Desktop/PROYECTS/PAGOS/ARENERO-RAMIRO/FRONTEND/QT-DESIGNS/designs/visuals/icons.qrc -o icons.py
