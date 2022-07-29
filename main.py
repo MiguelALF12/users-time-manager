@@ -10,9 +10,11 @@
 
 import sys
 from FRONTEND.views.main import *
-
+from BACKEND.TESTS.unit import generateRandomUsers
 
 if __name__ == '__main__':
+    #generating random numbers
+    generateRandomUsers()
 
     app = QtWidgets.QApplication(sys.argv)
     # app.setWindowIcon(QtGui.QIcon(":/images/fact.png"))

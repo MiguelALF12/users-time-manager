@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ARENERO-RAMIRO.iml" filepath="$PROJECT_DIR$/.idea/ARENERO-RAMIRO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../TALLER_RELACIONES_GUI/.idea/TALLER_RELACIONES_GUI.iml" filepath="$PROJECT_DIR$/../TALLER_RELACIONES_GUI/.idea/TALLER_RELACIONES_GUI.iml" />
     </modules>
   </component>
 </project>

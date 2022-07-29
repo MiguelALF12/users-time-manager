@@ -11,7 +11,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 # from FRONTEND.views import edit, evacuate, register, search
-from FRONTEND.views.placements import placeholders
+from FRONTEND.views.constantsAndOthers import placeholders
 
 
 class UiMainWindow(object):

@@ -9,10 +9,15 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 from FRONTEND.views import icons
-from FRONTEND.views.placements import placeholders
+from FRONTEND.views.constantsAndOthers import placeholders, DEFAULT_USER_TIME_PRICES, VIP_USER_TIME_PRICES
+from BACKEND.CRUD import CRUD_users
+
 
 class UiForm(object):
+    formInstance = None
+
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1100, 370)
@@ -79,7 +84,7 @@ class UiForm(object):
         font.setWeight(75)
         self.nameLabel.setFont(font)
         self.nameLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                     "color:#ffffff;")
         self.nameLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.nameLabel.setObjectName("nameLabel")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.nameLabel)
@@ -96,13 +101,13 @@ class UiForm(object):
         self.nameLineEdit.setFont(font)
         self.nameLineEdit.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.nameLineEdit.setStyleSheet("background: #ffffff;\n"
-"border:2px rounded;\n"
-"border-radius: 10px;\n"
-"border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
-"color:#000000;")
+                                        "border:2px rounded;\n"
+                                        "border-radius: 10px;\n"
+                                        "border-style: outset;\n"
+                                        "border-color: rgb(57, 57, 57);\n"
+                                        "color:#000000;")
         self.nameLineEdit.setFrame(False)
-        self.nameLineEdit.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.nameLineEdit.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.nameLineEdit.setReadOnly(False)
         self.nameLineEdit.setClearButtonEnabled(True)
         self.nameLineEdit.setObjectName("nameLineEdit")
@@ -120,7 +125,7 @@ class UiForm(object):
         font.setWeight(75)
         self.braceletNumLabel.setFont(font)
         self.braceletNumLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                            "color:#ffffff;")
         self.braceletNumLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.braceletNumLabel.setWordWrap(True)
         self.braceletNumLabel.setObjectName("braceletNumLabel")
@@ -138,11 +143,11 @@ class UiForm(object):
         self.braceletNumLineEdit.setFont(font)
         self.braceletNumLineEdit.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.braceletNumLineEdit.setStyleSheet("background: #ffffff;\n"
-"border:2px rounded;\n"
-"border-radius: 10px;\n"
-"border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
-"color:#000000;")
+                                               "border:2px rounded;\n"
+                                               "border-radius: 10px;\n"
+                                               "border-style: outset;\n"
+                                               "border-color: rgb(57, 57, 57);\n"
+                                               "color:#000000;")
         self.braceletNumLineEdit.setFrame(False)
         self.braceletNumLineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.braceletNumLineEdit.setReadOnly(False)
@@ -168,11 +173,11 @@ class UiForm(object):
         font.setPointSize(17)
         self.ParentIDLineEdit.setFont(font)
         self.ParentIDLineEdit.setStyleSheet("background: #ffffff;\n"
-"border:2px rounded;\n"
-"border-radius: 10px;\n"
-"border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
-"color:#000000;")
+                                            "border:2px rounded;\n"
+                                            "border-radius: 10px;\n"
+                                            "border-style: outset;\n"
+                                            "border-color: rgb(57, 57, 57);\n"
+                                            "color:#000000;")
         self.ParentIDLineEdit.setFrame(False)
         self.ParentIDLineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.ParentIDLineEdit.setReadOnly(False)
@@ -191,7 +196,7 @@ class UiForm(object):
         font.setWeight(75)
         self.totalTimeLabel.setFont(font)
         self.totalTimeLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                          "color:#ffffff;")
         self.totalTimeLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.totalTimeLabel.setObjectName("totalTimeLabel")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.totalTimeLabel)
@@ -208,7 +213,7 @@ class UiForm(object):
         font.setWeight(75)
         self.parentLabel.setFont(font)
         self.parentLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                       "color:#ffffff;")
         self.parentLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.parentLabel.setObjectName("parentLabel")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.parentLabel)
@@ -224,11 +229,11 @@ class UiForm(object):
         font.setPointSize(17)
         self.ParentLineEdit.setFont(font)
         self.ParentLineEdit.setStyleSheet("background: #ffffff;\n"
-"border:2px rounded;\n"
-"border-radius: 10px;\n"
-"border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
-"color:#000000;")
+                                          "border:2px rounded;\n"
+                                          "border-radius: 10px;\n"
+                                          "border-style: outset;\n"
+                                          "border-color: rgb(57, 57, 57);\n"
+                                          "color:#000000;")
         self.ParentLineEdit.setFrame(False)
         self.ParentLineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.ParentLineEdit.setReadOnly(False)
@@ -247,7 +252,7 @@ class UiForm(object):
         font.setWeight(75)
         self.parentIDLabel.setFont(font)
         self.parentIDLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                         "color:#ffffff;")
         self.parentIDLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.parentIDLabel.setObjectName("parentIDLabel")
         self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.parentIDLabel)
@@ -264,11 +269,11 @@ class UiForm(object):
         self.totalTimeComboBox.setFont(font)
         self.totalTimeComboBox.setMouseTracking(True)
         self.totalTimeComboBox.setStyleSheet("background: #ffffff;\n"
-"border:2px rounded;\n"
-"border-radius: 6px;\n"
-"border-style: outset;\n"
-"border-color: rgb(57, 57, 57);\n"
-"color:#000000;")
+                                             "border:2px rounded;\n"
+                                             "border-radius: 6px;\n"
+                                             "border-style: outset;\n"
+                                             "border-color: rgb(57, 57, 57);\n"
+                                             "color:#000000;")
         self.totalTimeComboBox.setObjectName("totalTimeComboBox")
         self.totalTimeComboBox.addItem("")
         self.totalTimeComboBox.addItem("")
@@ -337,7 +342,6 @@ class UiForm(object):
         self.horizontalLayout_6.addWidget(self.NoVipUserRadioButton)
         self.formLayout_3.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_6)
 
-
         self.putPriceLabel = QtWidgets.QLabel(Form)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -350,14 +354,14 @@ class UiForm(object):
         font.setPointSize(17)
         self.putPriceLabel.setFont(font)
         self.putPriceLabel.setStyleSheet("QLabel {\n"
-"    border: 2px rounded;\n"
-"    border-color: rgb(57, 57, 57);\n"
-"    border-radius: 8px;\n"
-"    border-style: outset;\n"
-"    background-color: #ffffff;\n"
-"    padding: 5 px;\n"
-"    color:#000000;\n"
-"}")
+                                         "    border: 2px rounded;\n"
+                                         "    border-color: rgb(57, 57, 57);\n"
+                                         "    border-radius: 8px;\n"
+                                         "    border-style: outset;\n"
+                                         "    background-color: #ffffff;\n"
+                                         "    padding: 5 px;\n"
+                                         "    color:#000000;\n"
+                                         "}")
         self.putPriceLabel.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.putPriceLabel.setFrameShadow(QtWidgets.QFrame.Plain)
         self.putPriceLabel.setLineWidth(2)
@@ -377,7 +381,7 @@ class UiForm(object):
         font.setWeight(75)
         self.priceLabel.setFont(font)
         self.priceLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                      "color:#ffffff;")
         self.priceLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.priceLabel.setWordWrap(True)
         self.priceLabel.setObjectName("priceLabel")
@@ -395,7 +399,7 @@ class UiForm(object):
         font.setWeight(75)
         self.payedLabel.setFont(font)
         self.payedLabel.setStyleSheet("background:rgb(80, 80, 80);\n"
-"color:#ffffff;")
+                                      "color:#ffffff;")
         self.payedLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.payedLabel.setObjectName("payedLabel")
         self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.payedLabel)
@@ -411,7 +415,7 @@ class UiForm(object):
         font.setPointSize(17)
         self.YesPayedRadioButton.setFont(font)
         self.YesPayedRadioButton.setStyleSheet("color:#000000;\n"
-"")
+                                               "")
         self.YesPayedRadioButton.setCheckable(True)
         self.YesPayedRadioButton.setChecked(False)
         self.YesPayedRadioButton.setAutoRepeat(False)
@@ -427,7 +431,7 @@ class UiForm(object):
         font.setPointSize(17)
         self.NoPayedRadioButton.setFont(font)
         self.NoPayedRadioButton.setStyleSheet("color:#000000;\n"
-"")
+                                              "")
         self.NoPayedRadioButton.setCheckable(True)
         self.NoPayedRadioButton.setChecked(False)
         self.NoPayedRadioButton.setAutoRepeat(False)
@@ -452,22 +456,22 @@ class UiForm(object):
         font.setPointSize(20)
         self.acceptRegisterRequestPushButton.setFont(font)
         self.acceptRegisterRequestPushButton.setStyleSheet("QPushButton{\n"
-"    padding: 0px 10px 0px 10px;\n"
-"    background: rgb(163, 111, 61);\n"
-"    color: #232323;\n"
-"    border:1px rounded #232323;\n"
-"    border-radius: 5px;\n"
-"    border-style: outset;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: #e0d1bd;\n"
-"    }\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border-style: inset;\n"
-"    background: rgb(214, 218, 218);\n"
-"    }")
+                                                           "    padding: 0px 10px 0px 10px;\n"
+                                                           "    background: rgb(163, 111, 61);\n"
+                                                           "    color: #232323;\n"
+                                                           "    border:1px rounded #232323;\n"
+                                                           "    border-radius: 5px;\n"
+                                                           "    border-style: outset;\n"
+                                                           "}\n"
+                                                           "\n"
+                                                           "QPushButton:hover {\n"
+                                                           "    background: #e0d1bd;\n"
+                                                           "    }\n"
+                                                           "\n"
+                                                           "QPushButton:pressed {\n"
+                                                           "    border-style: inset;\n"
+                                                           "    background: rgb(214, 218, 218);\n"
+                                                           "    }")
         self.acceptRegisterRequestPushButton.setObjectName("acceptRegisterRequestPushButton")
         self.horizontalLayout_2.addWidget(self.acceptRegisterRequestPushButton)
         self.denyRegisterRequestPushButton = QtWidgets.QPushButton(Form)
@@ -481,22 +485,22 @@ class UiForm(object):
         font.setPointSize(20)
         self.denyRegisterRequestPushButton.setFont(font)
         self.denyRegisterRequestPushButton.setStyleSheet("QPushButton{\n"
-"    padding: 0px 10px 0px 10px;\n"
-"    background: rgb(230, 230, 230);\n"
-"    color: #232323;\n"
-"    border:1px rounded #232323;\n"
-"    border-radius: 5px;\n"
-"    border-style: outset;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background: rgb(255,255,255);\n"
-"    }\n"
-"\n"
-"QPushButton:pressed {\n"
-"    border-style: inset;\n"
-"    background: rgb(214, 218, 218);\n"
-"    }")
+                                                         "    padding: 0px 10px 0px 10px;\n"
+                                                         "    background: rgb(230, 230, 230);\n"
+                                                         "    color: #232323;\n"
+                                                         "    border:1px rounded #232323;\n"
+                                                         "    border-radius: 5px;\n"
+                                                         "    border-style: outset;\n"
+                                                         "}\n"
+                                                         "\n"
+                                                         "QPushButton:hover {\n"
+                                                         "    background: rgb(255,255,255);\n"
+                                                         "    }\n"
+                                                         "\n"
+                                                         "QPushButton:pressed {\n"
+                                                         "    border-style: inset;\n"
+                                                         "    background: rgb(214, 218, 218);\n"
+                                                         "    }")
         self.denyRegisterRequestPushButton.setObjectName("denyRegisterRequestPushButton")
         self.horizontalLayout_2.addWidget(self.denyRegisterRequestPushButton)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -506,6 +510,14 @@ class UiForm(object):
         self.retranslateUi(Form)
         self.totalTimeComboBox.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
+        # Connecting acceptRegister and denyRegister buttons
+        self.acceptRegisterRequestPushButton.clicked.connect(self.saveUser)
+        self.denyRegisterRequestPushButton.clicked.connect(self.closeRegister)
+
+        #other signals
+        self.totalTimeComboBox.activated.connect(lambda: self.putPriceLabel.setText(str(self.calcChargingPrice())))
+        #TODO: Here goes something similar but with VIP users
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -526,10 +538,10 @@ class UiForm(object):
         self.parentIDLabel.setText(_translate("Form", "Acudiente-ID"))
         self.totalTimeComboBox.setCurrentText(_translate("Form", "Seleccione"))
         self.totalTimeComboBox.setItemText(0, _translate("Form", "Seleccione"))
-        self.totalTimeComboBox.setItemText(1, _translate("Form", "New Item"))
-        self.totalTimeComboBox.setItemText(2, _translate("Form", "New Item"))
-        self.totalTimeComboBox.setItemText(3, _translate("Form", "New Item"))
-        self.totalTimeComboBox.setItemText(4, _translate("Form", "New Item"))
+        self.totalTimeComboBox.setItemText(1, _translate("Form", "15 minutos"))
+        self.totalTimeComboBox.setItemText(2, _translate("Form", "30 minutos"))
+        self.totalTimeComboBox.setItemText(3, _translate("Form", "1 hora"))
+        self.totalTimeComboBox.setItemText(4, _translate("Form", "2 horas"))
         self.ParentLineEdit.setPlaceholderText(_translate("Form", placeholders['PH_PARENT']))
         self.priceLabel.setText(_translate("Form", "Valor total a pagar"))
         self.putPriceLabel.setText(_translate("Form", placeholders['PH_TOTAL_MONEY']))
@@ -546,5 +558,60 @@ class UiForm(object):
         self.registerWidgetInstance = QtWidgets.QWidget()
         # self.registerWidgetInstance.setWindowIcon(QtGui.QIcon(":/images/fact.png"))
         self.setupUi(self.registerWidgetInstance)
+        UiForm.formInstance = self.registerWidgetInstance
         self.registerWidgetInstance.show()
 
+    def closeRegister(self):
+        return UiForm.formInstance.close() if UiForm.formInstance is not None else 0
+
+    def show_pop_up(self, show_text, message_type):
+        message = QMessageBox()
+        # message.windowIcon()
+        message.setWindowTitle("Arenero PlayKids")
+        message.setText(show_text)
+        message.setIcon(message_type)
+        message.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        retval = message.exec_()
+
+    def validateFields(self, user):
+        # Default values
+        # {'Nombre': '', 'Manilla': '', 'Tiempo': 'Seleccione',
+        # 'Acudiente': '', 'ID-Acudiente': '', 'Dinero': '', 'Pagado': False, 'Usuario VIP': False}
+        # All are obligatory, at the momment, ignoring the fact that payed and vipUser can go False
+        fieldsWithErrors = []
+        excludedFields = ["Manilla", "Dinero", "Pagado", "Usuario VIP"]
+        noTAdmitedValues = ["", None]
+        for field, value in user.items():
+            if field not in excludedFields:
+                if value in noTAdmitedValues:
+                    fieldsWithErrors.append(field)
+        if len(fieldsWithErrors) != 0:
+            separator = ","
+            self.show_pop_up(f"Tienes errores en los campos {separator.join(fieldsWithErrors)}", QMessageBox.Warning)
+        else:
+            return True
+
+    def calcChargingPrice(self):
+        selectedTime = self.totalTimeComboBox.currentText()
+        if self.YesVipUserRadioButton.isChecked():
+            return VIP_USER_TIME_PRICES[selectedTime]
+        else:
+            return DEFAULT_USER_TIME_PRICES[selectedTime]
+
+    def saveUser(self):
+        newUser = {
+            "Nombre": self.nameLineEdit.text().strip(),
+            "Manilla": self.braceletNumLineEdit.text().strip(),
+            "Tiempo": self.totalTimeComboBox.currentText(),
+            "Acudiente": self.ParentLineEdit.text().strip(),
+            "ID-Acudiente": self.ParentIDLineEdit.text().strip(),
+            "Dinero": self.calcChargingPrice(),
+            "Pagado": True if self.YesPayedRadioButton.isChecked() else False,
+            "Usuario VIP": True if self.YesVipUserRadioButton.isChecked() else False
+        }
+        if self.validateFields(newUser):
+            print("Usuario añadido -> ", newUser)
+            CRUD_users.createUser(newUser)
+            self.closeRegister()
+
+# TODO: Problems with checkbox section
