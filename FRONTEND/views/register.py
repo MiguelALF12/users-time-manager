@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from FRONTEND.views import icons
 from FRONTEND.views.constantsAndOthers import placeholders, DEFAULT_USER_TIME_PRICES, VIP_USER_TIME_PRICES
-from BACKEND.CRUD import CRUD_users
+from BACKEND.CRUD.CRUD_users import *
 
 
 class UiForm(object):
@@ -515,9 +515,9 @@ class UiForm(object):
         self.acceptRegisterRequestPushButton.clicked.connect(self.saveUser)
         self.denyRegisterRequestPushButton.clicked.connect(self.closeRegister)
 
-        #other signals
+        # other signals
         self.totalTimeComboBox.activated.connect(lambda: self.putPriceLabel.setText(str(self.calcChargingPrice())))
-        #TODO: Here goes something similar but with VIP users
+        # TODO: Here goes something similar but with VIP users
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -607,11 +607,15 @@ class UiForm(object):
             "ID-Acudiente": self.ParentIDLineEdit.text().strip(),
             "Dinero": self.calcChargingPrice(),
             "Pagado": True if self.YesPayedRadioButton.isChecked() else False,
-            "Usuario VIP": True if self.YesVipUserRadioButton.isChecked() else False
+            "Usuario VIP": True if self.YesVipUserRadioButton.isChecked() else False,
+            # TODO: Remember manage this when creating count time module
+            "Hora entrada": 0,
+            "Hora salida": 0,
+            "Sale": False
         }
         if self.validateFields(newUser):
             print("Usuario añadido -> ", newUser)
-            CRUD_users.createUser(newUser)
+            createUser(newUser)
             self.closeRegister()
 
 # TODO: Problems with checkbox section

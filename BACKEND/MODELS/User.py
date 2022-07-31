@@ -1,4 +1,3 @@
-
 DEFAULT_USER_TIME_PRICES = {
     '15 minutos': 8000,
     '30 minutos': 14000,
@@ -13,8 +12,12 @@ VIP_USER_TIME_PRICES = {
     '2 horas': 32000,
 }
 
+
 class User:
-    def __init__(self, name, braceletNumber, totalTime, parent, parentID, money, payed, vipUser):
+
+    def __init__(self, name, braceletNumber, totalTime, parent, parentID, money, payed, vipUser,
+                 entryHour, exitHour, userTimeDone):
+        self.__index = 0  # Default value
         self.__name = name
         self.__braceletNumber = braceletNumber
         self.__totalTime = totalTime
@@ -23,6 +26,17 @@ class User:
         self.__money = money
         self.__payed = payed
         self.__vipUser = vipUser
+        self.__entryHour = entryHour
+        self.__exitHour = exitHour
+        self.__userTimeDone = userTimeDone
+
+    @property
+    def index(self):
+        return self.__index
+
+    @index.setter
+    def index(self, newIndex):
+        self.__index = newIndex
 
     @property
     def name(self):
@@ -88,3 +102,26 @@ class User:
     def vipUser(self, newVipUser):
         self.__vipUser = newVipUser
 
+    @property
+    def entryHour(self):
+        return self.__entryHour
+
+    @entryHour.setter
+    def entryHour(self, newEntryHour):
+        self.__entryHour = newEntryHour
+
+    @property
+    def exitHour(self):
+        return self.__exitHour
+
+    @exitHour.setter
+    def exitHour(self, newExitHour):
+        self.__exitHour = newExitHour
+
+    @property
+    def userTimeDone(self):
+        return self.__userTimeDone
+
+    @userTimeDone.setter
+    def userTimeDone(self, newUserTimeDone):
+        self.__userTimeDone = newUserTimeDone

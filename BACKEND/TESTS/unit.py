@@ -23,6 +23,9 @@ def generateRandomUsers():
             "ID-Acudiente": str(randint(0, 1000)),
             "Dinero": DEFAULT_USER_TIME_PRICES_TEST[timeSelected][1],
             "Pagado": False,
-            "Usuario VIP": False
+            "Usuario VIP": False,
+            "Hora entrada": 0,
+            "Hora salida": 0,
+            "Sale": False
         }
         CRUD_users.createUser(newUser)

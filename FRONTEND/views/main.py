@@ -20,6 +20,8 @@ from BACKEND.CRUD.CRUD_users import *
 from functools import reduce
 
 users = CrudLocalStorage.getUsers()
+usersResultedFromSearch = list()
+# usersIndexes = list()
 
 class UiMainWindow(object):
     def setupUi(self, mainWindow):
@@ -293,7 +295,7 @@ class UiMainWindow(object):
         self.recordsTableWidget.setProperty("showDropIndicator", False)
         self.recordsTableWidget.setDragDropOverwriteMode(False)
         self.recordsTableWidget.setDefaultDropAction(QtCore.Qt.TargetMoveAction)
-        self.recordsTableWidget.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
+        self.recordsTableWidget.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
         self.recordsTableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.recordsTableWidget.setTextElideMode(QtCore.Qt.ElideNone)
         self.recordsTableWidget.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerItem)
@@ -744,12 +746,19 @@ class UiMainWindow(object):
     #     self.viewEvacuate = evacuate.Ui_Form()
     #     self.viewEvacuate.showEvacuate()
     def search(self):
+        # TODO: create a shortcut with enter key, when pressed, call this
+        global usersResultedFromSearch
         searchParameter = self.searchRecordParameterComboBox.currentText()
         if searchParameter == "Listar":
-            self.loadUsers()
+            print("-> BUSQUEDA REALIZADA: Cargando TODOS los usuarios registrados")
+            self.loadUsers(dataToLoadSpec="users")
         else:
-            # value = self.searchLineEdit.text().strip()
-            pass
+            #at the momment, param could be anything except Index
+            value = self.searchLineEdit.text().strip()
+            print(
+                f"-> BUSQUEDA REALIZADA: Cargando TODOS los usuarios que cumplen el criterio ({searchParameter}, {value})")
+            usersResultedFromSearch = searchUsersByParams(value, searchParameter)
+            self.loadUsers(dataToLoadSpec="usersResultedFromSearch")
 
     def cleanUpUsersTable(self):
         self.recordsTableWidget.clearContents()
@@ -764,25 +773,26 @@ class UiMainWindow(object):
         message.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         retval = message.exec_()
 
-    # TODO: Does this need to be into CRUD_users?
-    def calcTotalMoney(self):
-        global users
-        totalMoney = 0
-        for user in users:
-            totalMoney += getAttribute(user,"money")
-        return totalMoney
 
-    def loadUsers(self):
-        global users
-        totalUsers = len(users)
+    def loadUsers(self, dataToLoadSpec):
+        global users, usersResultedFromSearch
+
+        allData = [users,usersResultedFromSearch]
+        dataToLoadIndex = 0
 
         self.cleanUpUsersTable()
 
-        if totalUsers == 0:
-            message = "No hay usuarios registrados!!"
-            self.showPopUp(message, QMessageBox.Warning)
-        else:
+        if dataToLoadSpec == "users":
+            dataToLoadIndex = 0
+        elif dataToLoadSpec == "usersResultedFromSearch":
+            dataToLoadIndex = 1
 
+        totalUsers = len(allData[dataToLoadIndex])
+        if totalUsers == 0:
+            message = "No se encontraron usuarios!!\nVerifica la busqueda realizada y\o si has hecho algún registro."
+            self.showPopUp(message, QMessageBox.Warning)
+            return
+        else:
             #setting the row-size and initial row index
             self.recordsTableWidget.setRowCount(totalUsers)
             rowCount = 0  # Start with one because of the default item
@@ -794,19 +804,23 @@ class UiMainWindow(object):
             brushForeground = QtGui.QBrush(QtGui.QColor(0, 0, 0))
             brushForeground.setStyle(QtCore.Qt.Dense2Pattern)
 
-            print("Cargando usuarios ... ")
+            print("CARGANDO USUARIOS ... ")
 
-            for user in users:
-                self.recordsTableWidget.setVerticalHeaderItem(rowCount,QtWidgets.QTableWidgetItem(str(rowCount)))
+            for user in allData[dataToLoadIndex]:
+                self.recordsTableWidget.setVerticalHeaderItem(rowCount, QtWidgets.QTableWidgetItem(
+                    str(getAttribute(user, "index"))))
                 self.recordsTableWidget.setItem(rowCount, 0, QtWidgets.QTableWidgetItem(getAttribute(user, "name")))
-                self.recordsTableWidget.setItem(rowCount, 1, QtWidgets.QTableWidgetItem(getAttribute(user, "braceletNumber")))
+                self.recordsTableWidget.setItem(rowCount, 1, QtWidgets.QTableWidgetItem(
+                    getAttribute(user, "braceletNumber")))
                 self.recordsTableWidget.setItem(rowCount, 2, QtWidgets.QTableWidgetItem(getAttribute(user, "totalTime")))
                 #TODO: Count time Module needed
-                self.recordsTableWidget.setItem(rowCount, 3, QtWidgets.QTableWidgetItem("00:00")) #hora entrada
-                self.recordsTableWidget.setItem(rowCount, 4, QtWidgets.QTableWidgetItem("00:00")) #hora salida
-                self.recordsTableWidget.setItem(rowCount, 5, QtWidgets.QTableWidgetItem())#sale
+                self.recordsTableWidget.setItem(rowCount, 3, QtWidgets.QTableWidgetItem(
+                    str(getAttribute(user, "entryHour"))))
+                self.recordsTableWidget.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(
+                    str(getAttribute(user, "exitHour"))))
+                self.recordsTableWidget.setItem(rowCount, 5, QtWidgets.QTableWidgetItem()) # str(getAttribute(user, "userTimeDone"), this is  not shown
                 self.recordsTableWidget.setItem(rowCount, 6, QtWidgets.QTableWidgetItem(str(getAttribute(user, "money"))))
-                self.recordsTableWidget.setItem(rowCount, 7, QtWidgets.QTableWidgetItem(getAttribute(user, "payed")))
+                self.recordsTableWidget.setItem(rowCount, 7, QtWidgets.QTableWidgetItem()) # getAttribute(user, "payed"), this is not shown
                 self.recordsTableWidget.setItem(rowCount, 8, QtWidgets.QTableWidgetItem(getAttribute(user, "parent")))
                 self.recordsTableWidget.setItem(rowCount, 9, QtWidgets.QTableWidgetItem(getAttribute(user, "parentID")))
 
@@ -819,13 +833,14 @@ class UiMainWindow(object):
                 rowCount += 1
 
             #Updating indicators
-            self.updateIndicators(totalUsers=totalUsers,totalMoney= self.calcTotalMoney())
+            self.updateIndicators(totalUsers=totalUsers, totalMoney=calcTotalMoney(allData[dataToLoadIndex]))
+
+            print("USUARIOS MOSTRADOS SATISFACTORIAMENTE")
 
     def updateIndicators(self, **kwargs):
         self.putTotalPeopleLabel.setText(placeholders['PH_TOTAL_USERS'] if kwargs['totalUsers'] == 0
                                          else str(kwargs['totalUsers']))
         self.putTotalMoneyLabel.setText(placeholders['PH_TOTAL_MONEY'] if kwargs['totalMoney'] == 0 else str(kwargs['totalMoney']))
 
-# TODO: fix style of cells on register users's table
 # TODO: fix someway the recommended Typos and PEP highlights
 # TODO: Fix evacuate putting cancelado option and connecting to main

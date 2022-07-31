@@ -1,56 +1,103 @@
 from BACKEND.MODELS.User import User
 from BACKEND.CRUD.CRUD_local_storage import CrudLocalStorage
-
+import re
 
 def createUser(user):
     userRecorded = User(user['Nombre'], user['Manilla'], user['Tiempo'], user['Acudiente'],
-                        user['ID-Acudiente'], user['Dinero'], user['Pagado'], user['Usuario VIP'])
+                        user['ID-Acudiente'], user['Dinero'], user['Pagado'], user['Usuario VIP'],
+                        user['Hora entrada'], user['Hora salida'], user['Sale'])
     CrudLocalStorage.saveUser(userRecorded)
+    assignIndexes(userRecorded)
+    print("Usuario indexado con éxito -> ", getAttribute(userRecorded, "index"))
     print("Total de usuarios -> ", CrudLocalStorage.getUsers())
 
 
 def getAttribute(userObject, attr):
     if isinstance(userObject, User):
-        if attr == "name":
+        # There two options because of the search function, in order to make it easier for it
+        if attr == "index" or attr == "Index":
+            return userObject.index
+        elif attr == "name" or attr == "Nombre":
             return userObject.name
-        elif attr == "braceletNumber":
+        elif attr == "braceletNumber" or attr == "No. manilla":
             return userObject.braceletNumber
-        elif attr == "totalTime":
+        elif attr == "totalTime" or attr == "Tiempo total":
             return userObject.totalTime
-        elif attr == "parent":
+        elif attr == "parent" or attr == "Acudiente":
             return userObject.parent
-        elif attr == "parentID":
+        elif attr == "parentID" or attr == "Acudiente-ID":
             return userObject.parentID
-        elif attr == "money":
+        elif attr == "money" or attr == "Valor a pagar":
             return userObject.money
-        elif attr == "payed":
+        elif attr == "payed" or attr == "Cancelado":
             return userObject.payed
-        elif attr == "vipUser":
+        elif attr == "vipUser" or attr == "Usuario VIP": #TODO: need to add this to comboBox
             return userObject.vipUser
+        elif attr == "entryHour" or attr == "Hora entrada":
+            return userObject.entryHour
+        elif attr == "exitHour" or attr == "Hora salida":
+            return userObject.exitHour
+        elif attr == "userTimeDone" or attr == "Sale":
+            return userObject.userTimeDone
 
-# self.searchRecordParameterComboBox.setItemText(0, _translate("mainWindow", "Seleccionar"))
-#         self.searchRecordParameterComboBox.setItemText(1, _translate("mainWindow", "Index"))
-#         self.searchRecordParameterComboBox.setItemText(2, _translate("mainWindow", "Nombre"))
-#         self.searchRecordParameterComboBox.setItemText(3, _translate("mainWindow", "No. manilla"))
-#         self.searchRecordParameterComboBox.setItemText(4, _translate("mainWindow", "Tiempo total"))
-#         self.searchRecordParameterComboBox.setItemText(5, _translate("mainWindow", "Hora entrada"))
-#         self.searchRecordParameterComboBox.setItemText(6, _translate("mainWindow", "Hora salida"))
-#         self.searchRecordParameterComboBox.setItemText(7, _translate("mainWindow", "Sale"))
-#         self.searchRecordParameterComboBox.setItemText(8, _translate("mainWindow", "Valor a pagar"))
-#         self.searchRecordParameterComboBox.setItemText(9, _translate("mainWindow", "Cancelado"))
-#         self.searchRecordParameterComboBox.setItemText(10, _translate("mainWindow", "Acudiente"))
-#         self.searchRecordParameterComboBox.setItemText(11, _translate("mainWindow", "Acudiente-ID"))
-#         self.searchRecordParameterComboBox.setItemText(12, _translate("mainWindow", "Listar"))
+def setAttribute(userObject, attr, newValue):
+    if isinstance(userObject, User):
+        # There two options because of the search function, in order to make it easier for it
+        if attr == "index" or attr == "Index":
+            userObject.index = newValue
+        elif attr == "name" or attr == "Nombre":
+            userObject.name = newValue
+        elif attr == "braceletNumber" or attr == "No. manilla":
+            userObject.braceletNumber = newValue
+        elif attr == "totalTime" or attr == "Tiempo total":
+            userObject.totalTime = newValue
+        elif attr == "parent" or attr == "Acudiente":
+            userObject.parent = newValue
+        elif attr == "parentID" or attr == "Acudiente-ID":
+            userObject.parentID = newValue
+        elif attr == "money" or attr == "Valor a pagar":
+            userObject.money = newValue
+        elif attr == "payed" or attr == "Cancelado":
+            userObject.payed = newValue
+        elif attr == "vipUser" or attr == "Usuario VIP": #TODO: need to add this to comboBox
+            userObject.vipUser = newValue
+        elif attr == "entryHour" or attr == "Hora entrada":
+            userObject.entryHour = newValue
+        elif attr == "exitHour" or attr == "Hora salida":
+            userObject.exitHour = newValue
+        elif attr == "userTimeDone" or attr == "Sale":
+            userObject.userTimeDone = newValue
 
-# def searchUsersByParams(value, param):
-#     users = CrudLocalStorage.getUsers()
-#     foundedUsers = []
-#     for user in users:
-#         if getAttribute(user,param)
+def searchUsersByParams(value, param, **kwargs):
+    users = CrudLocalStorage.getUsers()
+    foundedUsers = []
+    searchForSubstringFieldsExceptions = ['Nombre', 'Tiempo', 'Acudiente']
+    exactSearchPattern = r'[\w.-]+ [\w.-]+'
+    for user in users:
+        userAttribute = str(getAttribute(user, param)).lower()
+        # TODO: How can i improve this conditional?
+        # TODO: For Payed and Sale, they could go as yes or no values for search input
+        #Check for good patterns
+        if re.search(exactSearchPattern, value):
+            if userAttribute == value.lower() or value.lower() in userAttribute:
+                foundedUsers.append(user)
+        #Check fo substrings
+        elif re.search("[ ]+", value) is None and value.lower() in userAttribute:
+            foundedUsers.append(user)
+    return foundedUsers
 
+#Other functions
+def calcTotalMoney(data):
+    totalMoney = 0
+    for user in data:
+        totalMoney += getAttribute(user, "money")
+    return totalMoney
 
-# TODO: Left doing setAttribute(userObject, attr)
-# TODO: Left doing searchUsersByParams
-#Notes: (Spanish) para la función de buscar usuarios por params, creo que es mejor definir atributos como hora de entrada
-# y hora de salida, sale, y cancelado propios para User(), esto me permitirá hacer la busqueda de manera mas integra. Por otra parte
-# debo de encontrar una manera de renombrar los params de manera tal que pueda acceder a los getters de Users().
+def assignIndexes(userObject):
+    users = CrudLocalStorage.getUsers()
+    if isinstance(userObject, User):
+        if len(users) > 1:
+            lastUser = users[len(users)-2]
+            lastUserIndex = getAttribute(lastUser, "index")
+            indexToAssign = lastUserIndex + 1
+            setAttribute(userObject, "index", indexToAssign)
