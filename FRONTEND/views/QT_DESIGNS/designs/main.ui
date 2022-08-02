@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1250</width>
-    <height>778</height>
+    <height>791</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -532,13 +532,16 @@ QTableWidget{
           <bool>true</bool>
          </property>
          <property name="editTriggers">
-          <set>QAbstractItemView::EditKeyPressed</set>
+          <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
          </property>
          <property name="tabKeyNavigation">
           <bool>false</bool>
          </property>
          <property name="showDropIndicator" stdset="0">
           <bool>false</bool>
+         </property>
+         <property name="dragEnabled">
+          <bool>true</bool>
          </property>
          <property name="dragDropOverwriteMode">
           <bool>false</bool>
@@ -1021,9 +1024,9 @@ QTableWidget{
           <property name="background">
            <brush brushstyle="Dense2Pattern">
             <color alpha="255">
-             <red>113</red>
-             <green>207</green>
-             <blue>65</blue>
+             <red>223</red>
+             <green>0</green>
+             <blue>13</blue>
             </color>
            </brush>
           </property>

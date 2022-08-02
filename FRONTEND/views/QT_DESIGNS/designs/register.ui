@@ -797,6 +797,9 @@ color:#ffffff;</string>
            <property name="autoRepeat">
             <bool>false</bool>
            </property>
+           <property name="autoExclusive">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -826,6 +829,9 @@ color:#ffffff;</string>
             <bool>false</bool>
            </property>
            <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoExclusive">
             <bool>false</bool>
            </property>
           </widget>
@@ -899,6 +905,9 @@ color:#ffffff;</string>
            <property name="autoRepeat">
             <bool>false</bool>
            </property>
+           <property name="autoExclusive">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -928,6 +937,9 @@ color:#ffffff;</string>
             <bool>false</bool>
            </property>
            <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoExclusive">
             <bool>false</bool>
            </property>
           </widget>
@@ -1062,5 +1074,70 @@ QPushButton:pressed {
  <resources>
   <include location="visuals/icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>YesPayedRadioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>NoPayedRadioButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>988</x>
+     <y>210</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1042</x>
+     <y>208</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>NoPayedRadioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>YesPayedRadioButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1015</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>985</x>
+     <y>223</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>YesVipUserRadioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>NoVipUserRadioButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>991</x>
+     <y>256</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1027</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>NoVipUserRadioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>YesVipUserRadioButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1017</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>978</x>
+     <y>259</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

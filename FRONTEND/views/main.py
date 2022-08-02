@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
 from FRONTEND.views import icons
-from FRONTEND.views import register
+from FRONTEND.views import register, evacuate
 from FRONTEND.views.constantsAndOthers import placeholders
 # from BACKEND.CRUD.CRUD_local_storage import CrudLocalStorage
 from BACKEND.CRUD.CRUD_users import *
@@ -21,6 +21,8 @@ from functools import reduce
 
 users = CrudLocalStorage.getUsers()
 usersResultedFromSearch = list()
+
+
 # usersIndexes = list()
 
 class UiMainWindow(object):
@@ -647,7 +649,7 @@ class UiMainWindow(object):
         # Connecting buttons with pages
         self.crud_recordPushButton.clicked.connect(self.launchRegister)
         # self.crud_editPushButton.clicked.connect(self.launchEdit)
-        # self.evacuatePushButton.clicked.connect(self.launchEvacuate)
+        self.evacuatePushButton.clicked.connect(self.launchEvacuate)
 
         # Search button connections
         self.searchRecordPushButton.clicked.connect(self.search)
@@ -733,18 +735,16 @@ class UiMainWindow(object):
         self.viewRegister = register.UiForm()
         self.viewRegister.showRegister()
 
-    #
-    # def launchSearch(self):
-    #     self.viewSearch = search.Ui_Form()
-    #     self.viewSearch.showSearch()
-    #
     # def launchEdit(self):
     #     self.viewEdit = edit.Ui_Form()
     #     self.viewEdit.showEdit()
     #
-    # def launchEvacuate(self):
-    #     self.viewEvacuate = evacuate.Ui_Form()
-    #     self.viewEvacuate.showEvacuate()
+    def launchEvacuate(self):
+        self.getSelectedRows()
+        self.viewEvacuate = evacuate.UiForm()
+        self.viewEvacuate.showEvacuate()
+
+
     def search(self):
         # TODO: create a shortcut with enter key, when pressed, call this
         global usersResultedFromSearch
@@ -753,7 +753,7 @@ class UiMainWindow(object):
             print("-> BUSQUEDA REALIZADA: Cargando TODOS los usuarios registrados")
             self.loadUsers(dataToLoadSpec="users")
         else:
-            #at the momment, param could be anything except Index
+            # at the momment, param could be anything except Index
             value = self.searchLineEdit.text().strip()
             print(
                 f"-> BUSQUEDA REALIZADA: Cargando TODOS los usuarios que cumplen el criterio ({searchParameter}, {value})")
@@ -764,7 +764,8 @@ class UiMainWindow(object):
         self.recordsTableWidget.clearContents()
         self.recordsTableWidget.setRowCount(0)
 
-    def showPopUp(self, show_text, message_type):
+    @staticmethod
+    def showPopUp(show_text, message_type):
         message = QMessageBox()
         # message.windowIcon()
         message.setWindowTitle("Arenero PlayKids")
@@ -773,11 +774,33 @@ class UiMainWindow(object):
         message.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         retval = message.exec_()
 
+    def manageCellVerificationStyle(self, rowCount, column, usersFieldToVerifyValue):
+        # Style for sale and payed cells
+        # TODO: Here goes the verification of payed and sale,
+        #  one related with count time, the other one goes with checkbox
+        trueBrushBackground = QtGui.QBrush(QtGui.QColor(113, 207, 65))
+        trueBrushBackground.setStyle(QtCore.Qt.Dense2Pattern)
+        trueBrushForeground = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        trueBrushForeground.setStyle(QtCore.Qt.Dense2Pattern)
+        trueCellVerificationStyle = (trueBrushBackground, trueBrushForeground)
+
+        falseBrushBackground = QtGui.QBrush(QtGui.QColor(223, 0, 13))
+        falseBrushBackground.setStyle(QtCore.Qt.Dense2Pattern)
+        falseBrushForeground = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        falseBrushForeground.setStyle(QtCore.Qt.Dense2Pattern)
+        falseCellVerificationStyle = (falseBrushBackground, falseBrushForeground)
+
+        self.recordsTableWidget.item(rowCount, column).setBackground(trueCellVerificationStyle[0] if
+                                                                     usersFieldToVerifyValue else
+                                                                     falseCellVerificationStyle[0])
+        self.recordsTableWidget.item(rowCount, column).setForeground(trueCellVerificationStyle[1] if
+                                                                     usersFieldToVerifyValue else
+                                                                     falseCellVerificationStyle[1])
 
     def loadUsers(self, dataToLoadSpec):
         global users, usersResultedFromSearch
-
-        allData = [users,usersResultedFromSearch]
+        # Matrix with [[Registered users], [users resulted from search]]
+        allData = [users, usersResultedFromSearch]
         dataToLoadIndex = 0
 
         self.cleanUpUsersTable()
@@ -789,20 +812,13 @@ class UiMainWindow(object):
 
         totalUsers = len(allData[dataToLoadIndex])
         if totalUsers == 0:
-            message = "No se encontraron usuarios!!\nVerifica la busqueda realizada y\o si has hecho algún registro."
+            message = "No se encontraron usuarios!!\nVerifica la busqueda realizada y/o si has hecho algún registro."
             self.showPopUp(message, QMessageBox.Warning)
             return
         else:
-            #setting the row-size and initial row index
+            # setting the row-size and initial row index
             self.recordsTableWidget.setRowCount(totalUsers)
             rowCount = 0  # Start with one because of the default item
-
-            # style for sale and payed cells
-            #TODO: Here goes the verification of payed and sale, one related with count time, the other one goes with checkbox
-            brushBackground = QtGui.QBrush(QtGui.QColor(113, 207, 65))
-            brushBackground.setStyle(QtCore.Qt.Dense2Pattern)
-            brushForeground = QtGui.QBrush(QtGui.QColor(0, 0, 0))
-            brushForeground.setStyle(QtCore.Qt.Dense2Pattern)
 
             print("CARGANDO USUARIOS ... ")
 
@@ -812,27 +828,31 @@ class UiMainWindow(object):
                 self.recordsTableWidget.setItem(rowCount, 0, QtWidgets.QTableWidgetItem(getAttribute(user, "name")))
                 self.recordsTableWidget.setItem(rowCount, 1, QtWidgets.QTableWidgetItem(
                     getAttribute(user, "braceletNumber")))
-                self.recordsTableWidget.setItem(rowCount, 2, QtWidgets.QTableWidgetItem(getAttribute(user, "totalTime")))
-                #TODO: Count time Module needed
+                self.recordsTableWidget.setItem(rowCount, 2,
+                                                QtWidgets.QTableWidgetItem(getAttribute(user, "totalTime")))
+                # TODO: Count time Module needed
                 self.recordsTableWidget.setItem(rowCount, 3, QtWidgets.QTableWidgetItem(
                     str(getAttribute(user, "entryHour"))))
                 self.recordsTableWidget.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(
                     str(getAttribute(user, "exitHour"))))
-                self.recordsTableWidget.setItem(rowCount, 5, QtWidgets.QTableWidgetItem()) # str(getAttribute(user, "userTimeDone"), this is  not shown
-                self.recordsTableWidget.setItem(rowCount, 6, QtWidgets.QTableWidgetItem(str(getAttribute(user, "money"))))
-                self.recordsTableWidget.setItem(rowCount, 7, QtWidgets.QTableWidgetItem()) # getAttribute(user, "payed"), this is not shown
+                self.recordsTableWidget.setItem(rowCount, 5,
+                                                QtWidgets.QTableWidgetItem())  # str(getAttribute(user, "userTimeDone"), this is  not shown
+                self.recordsTableWidget.setItem(rowCount, 6,
+                                                QtWidgets.QTableWidgetItem(str(getAttribute(user, "money"))))
+                self.recordsTableWidget.setItem(rowCount, 7,
+                                                QtWidgets.QTableWidgetItem())  # getAttribute(user, "payed"), this is not shown
                 self.recordsTableWidget.setItem(rowCount, 8, QtWidgets.QTableWidgetItem(getAttribute(user, "parent")))
                 self.recordsTableWidget.setItem(rowCount, 9, QtWidgets.QTableWidgetItem(getAttribute(user, "parentID")))
 
-                #Giving proper style
+                # Defining style wheter the user time is done and if it has paid
+                isUserTimeDone = getAttribute(user, "userTimeDone")
+                haveUserPayed = getAttribute(user, "payed")
+                self.manageCellVerificationStyle(rowCount, 5, isUserTimeDone)
+                self.manageCellVerificationStyle(rowCount, 7, haveUserPayed)
 
-                self.recordsTableWidget.item(rowCount,5).setBackground(brushBackground)
-                self.recordsTableWidget.item(rowCount, 5).setForeground(brushForeground)
-                self.recordsTableWidget.item(rowCount, 7).setBackground(brushBackground)
-                self.recordsTableWidget.item(rowCount, 7).setForeground(brushForeground)
                 rowCount += 1
 
-            #Updating indicators
+            # Updating indicators
             self.updateIndicators(totalUsers=totalUsers, totalMoney=calcTotalMoney(allData[dataToLoadIndex]))
 
             print("USUARIOS MOSTRADOS SATISFACTORIAMENTE")
@@ -840,7 +860,12 @@ class UiMainWindow(object):
     def updateIndicators(self, **kwargs):
         self.putTotalPeopleLabel.setText(placeholders['PH_TOTAL_USERS'] if kwargs['totalUsers'] == 0
                                          else str(kwargs['totalUsers']))
-        self.putTotalMoneyLabel.setText(placeholders['PH_TOTAL_MONEY'] if kwargs['totalMoney'] == 0 else str(kwargs['totalMoney']))
+        self.putTotalMoneyLabel.setText(
+            placeholders['PH_TOTAL_MONEY'] if kwargs['totalMoney'] == 0 else str(kwargs['totalMoney']))
+
+    def getSelectedRows(self):
+        row = self.recordsTableWidget.selectedItems()
+        print("SELECTED ROW -> ", [data.text().strip() for data in self.recordsTableWidget.selectedItems()])
 
 # TODO: fix someway the recommended Typos and PEP highlights
 # TODO: Fix evacuate putting cancelado option and connecting to main

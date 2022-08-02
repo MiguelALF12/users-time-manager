@@ -181,6 +181,7 @@ class UiForm(object):
         self.ParentIDLineEdit.setFrame(False)
         self.ParentIDLineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.ParentIDLineEdit.setReadOnly(False)
+        self.ParentIDLineEdit.setClearButtonEnabled(True)
         self.ParentIDLineEdit.setObjectName("ParentIDLineEdit")
         self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.ParentIDLineEdit)
         self.totalTimeLabel = QtWidgets.QLabel(Form)
@@ -237,6 +238,7 @@ class UiForm(object):
         self.ParentLineEdit.setFrame(False)
         self.ParentLineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.ParentLineEdit.setReadOnly(False)
+        self.ParentLineEdit.setClearButtonEnabled(True)
         self.ParentLineEdit.setObjectName("ParentLineEdit")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.ParentLineEdit)
         self.parentIDLabel = QtWidgets.QLabel(Form)
@@ -322,6 +324,7 @@ class UiForm(object):
         self.YesVipUserRadioButton.setCheckable(True)
         self.YesVipUserRadioButton.setChecked(False)
         self.YesVipUserRadioButton.setAutoRepeat(False)
+        self.YesVipUserRadioButton.setAutoExclusive(False)
         self.YesVipUserRadioButton.setObjectName("YesVipUserRadioButton")
         self.horizontalLayout_6.addWidget(self.YesVipUserRadioButton)
         self.NoVipUserRadioButton = QtWidgets.QRadioButton(Form)
@@ -338,6 +341,7 @@ class UiForm(object):
         self.NoVipUserRadioButton.setCheckable(True)
         self.NoVipUserRadioButton.setChecked(False)
         self.NoVipUserRadioButton.setAutoRepeat(False)
+        self.NoVipUserRadioButton.setAutoExclusive(False)
         self.NoVipUserRadioButton.setObjectName("NoVipUserRadioButton")
         self.horizontalLayout_6.addWidget(self.NoVipUserRadioButton)
         self.formLayout_3.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_6)
@@ -419,6 +423,7 @@ class UiForm(object):
         self.YesPayedRadioButton.setCheckable(True)
         self.YesPayedRadioButton.setChecked(False)
         self.YesPayedRadioButton.setAutoRepeat(False)
+        self.YesPayedRadioButton.setAutoExclusive(False)
         self.YesPayedRadioButton.setObjectName("YesPayedRadioButton")
         self.horizontalLayout_3.addWidget(self.YesPayedRadioButton)
         self.NoPayedRadioButton = QtWidgets.QRadioButton(Form)
@@ -435,6 +440,7 @@ class UiForm(object):
         self.NoPayedRadioButton.setCheckable(True)
         self.NoPayedRadioButton.setChecked(False)
         self.NoPayedRadioButton.setAutoRepeat(False)
+        self.NoPayedRadioButton.setAutoExclusive(False)
         self.NoPayedRadioButton.setObjectName("NoPayedRadioButton")
         self.horizontalLayout_3.addWidget(self.NoPayedRadioButton)
         self.formLayout_3.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_3)
@@ -509,15 +515,22 @@ class UiForm(object):
 
         self.retranslateUi(Form)
         self.totalTimeComboBox.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(Form)
 
         # Connecting acceptRegister and denyRegister buttons
         self.acceptRegisterRequestPushButton.clicked.connect(self.saveUser)
         self.denyRegisterRequestPushButton.clicked.connect(self.closeRegister)
 
         # other signals
+        # Calculating the price based on the totalTime selected
         self.totalTimeComboBox.activated.connect(lambda: self.putPriceLabel.setText(str(self.calcChargingPrice())))
-        # TODO: Here goes something similar but with VIP users
+        # Enable and disable RadioButtons for Vip Users and Payed
+        self.YesPayedRadioButton.toggled['bool'].connect(self.NoPayedRadioButton.setDisabled)
+        self.YesPayedRadioButton.toggled['bool'].connect(self.NoPayedRadioButton.setDisabled)
+        self.NoPayedRadioButton.toggled['bool'].connect(self.YesPayedRadioButton.setDisabled)
+        self.YesVipUserRadioButton.toggled['bool'].connect(self.NoVipUserRadioButton.setDisabled)
+        self.NoVipUserRadioButton.toggled['bool'].connect(self.YesVipUserRadioButton.setDisabled)
+
+        QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -561,10 +574,12 @@ class UiForm(object):
         UiForm.formInstance = self.registerWidgetInstance
         self.registerWidgetInstance.show()
 
-    def closeRegister(self):
+    @staticmethod
+    def closeRegister():
         return UiForm.formInstance.close() if UiForm.formInstance is not None else 0
 
-    def show_pop_up(self, show_text, message_type):
+    @staticmethod
+    def show_pop_up(show_text, message_type):
         message = QMessageBox()
         # message.windowIcon()
         message.setWindowTitle("Arenero PlayKids")
@@ -580,7 +595,7 @@ class UiForm(object):
         # All are obligatory, at the momment, ignoring the fact that payed and vipUser can go False
         fieldsWithErrors = []
         excludedFields = ["Manilla", "Dinero", "Pagado", "Usuario VIP"]
-        noTAdmitedValues = ["", None]
+        noTAdmitedValues = ["", None, "Seleccione"]
         for field, value in user.items():
             if field not in excludedFields:
                 if value in noTAdmitedValues:
@@ -594,9 +609,9 @@ class UiForm(object):
     def calcChargingPrice(self):
         selectedTime = self.totalTimeComboBox.currentText()
         if self.YesVipUserRadioButton.isChecked():
-            return VIP_USER_TIME_PRICES[selectedTime]
+            return VIP_USER_TIME_PRICES[selectedTime] if selectedTime in VIP_USER_TIME_PRICES.keys() else ""
         else:
-            return DEFAULT_USER_TIME_PRICES[selectedTime]
+            return DEFAULT_USER_TIME_PRICES[selectedTime] if selectedTime in DEFAULT_USER_TIME_PRICES.keys() else ""
 
     def saveUser(self):
         newUser = {
@@ -618,4 +633,3 @@ class UiForm(object):
             createUser(newUser)
             self.closeRegister()
 
-# TODO: Problems with checkbox section
