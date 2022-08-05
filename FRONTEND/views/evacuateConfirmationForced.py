@@ -11,10 +11,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from FRONTEND.views import evacuateConfirmationAccept
+from BACKEND.CRUD.CRUD_users import evacuateUser, updateIndexes
 
 
 class UiForm(object):
     formInstance = None
+    userToForceEvacuate = None
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -125,8 +127,7 @@ class UiForm(object):
         self.retranslateUi(Form)
 
         #connecting Accept and deny buttons
-
-        self.acceptConfirmEvacuatePushButton.clicked.connect(self.launchEvacuateConfirmationAccepted)
+        self.acceptConfirmEvacuatePushButton.clicked.connect(self.validateUserToEvacuateIndex)
         self.cancelConfirmEvacuatePushButton.clicked.connect(self.closeForcedEvacuate)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -140,14 +141,22 @@ class UiForm(object):
         self.acceptConfirmEvacuatePushButton.setText(_translate("Form", "Aceptar"))
         self.cancelConfirmEvacuatePushButton.setText(_translate("Form", "Cancelar"))
 
-    def showForcedEvacuate(self):
+    def showForcedEvacuate(self, userToEvacuateIndex):
         self.forcedEvacuateWidgetInstance = QtWidgets.QWidget()
         # self.registerWidgetInstance.setWindowIcon(QtGui.QIcon(":/images/fact.png"))
         self.setupUi(self.forcedEvacuateWidgetInstance)
         UiForm.formInstance = self.forcedEvacuateWidgetInstance
+        UiForm.userToForceEvacuate = userToEvacuateIndex
         self.forcedEvacuateWidgetInstance.show()
 
+    def validateUserToEvacuateIndex(self):
+        if type(UiForm.userToForceEvacuate) == int:
+            evacuateUser(UiForm.userToForceEvacuate)
+            updateIndexes()
+            self.launchEvacuateConfirmationAccepted()
+
     def launchEvacuateConfirmationAccepted(self):
+        print("-----------------(FORCED) USUARIO ELIMINADO CON EXITO !!  -----------------")
         self.viewEvacuateConfirmaction = evacuateConfirmationAccept.UiForm()
         self.viewEvacuateConfirmaction.showEvacuateConfirmationAccepted()
         self.closeForcedEvacuate()

@@ -469,6 +469,9 @@ QPushButton:pressed {
     </item>
     <item>
      <widget class="QFrame" name="bodyFrame">
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(175, 127, 33);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -541,7 +544,7 @@ QTableWidget{
           <bool>false</bool>
          </property>
          <property name="dragEnabled">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <property name="dragDropOverwriteMode">
           <bool>false</bool>
@@ -550,7 +553,7 @@ QTableWidget{
           <enum>Qt::TargetMoveAction</enum>
          </property>
          <property name="selectionMode">
-          <enum>QAbstractItemView::MultiSelection</enum>
+          <enum>QAbstractItemView::SingleSelection</enum>
          </property>
          <property name="selectionBehavior">
           <enum>QAbstractItemView::SelectRows</enum>

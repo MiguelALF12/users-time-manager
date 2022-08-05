@@ -10,11 +10,12 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from FRONTEND.views import icons
-from FRONTEND.views import evacuateConfirmationDialog, evacuateConfirmationForced
+from FRONTEND.views import evacuateConfirmationDialog, evacuateConfirmationForced, evacuateConfirmationDeny
 from FRONTEND.views.constantsAndOthers import placeholders
 
 class UiForm(object):
     formInstance = None
+    userToEvacuate = None
 
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -357,9 +358,10 @@ class UiForm(object):
         self.retranslateUi(Form)
 
         # Connecting accept, cancel and forced evacuation
-        self.evacuatePushButton.clicked.connect(self.launchEvacuateConfirmation)
+        self.evacuatePushButton.clicked.connect(self.validateFieldsWithoutForce)
         self.cancelEvacuationPushButton.clicked.connect(self.closeEvacuation)
-        self.forceEvacuationPushButton.clicked.connect(self.launchForcedEvacuate)
+        self.forceEvacuationPushButton.clicked.connect(self.validateFieldsWithForce)
+
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -378,26 +380,62 @@ class UiForm(object):
         self.cancelEvacuationPushButton.setText(_translate("Form", "Cancelar"))
         self.forceEvacuationPushButton.setText(_translate("Form", "Forzar evacuación"))
 
-    def showEvacuate(self):
+    def showEvacuate(self, retrievedData):
         self.evacuateWidgetInstance = QtWidgets.QWidget()
         # self.registerWidgetInstance.setWindowIcon(QtGui.QIcon(":/images/fact.png"))
         self.setupUi(self.evacuateWidgetInstance)
         UiForm.formInstance = self.evacuateWidgetInstance
+        self.loadUserToEvacuate(retrievedData)
         self.evacuateWidgetInstance.show()
 
-    def searchUser(self):
-        # see todo on Crud_users
-        userIdentifier = self.searchLineEdit.text().strip()
+    def launchEvacuateConfirmationDeny(self):
+        self.viewEvacuateConfirmationDeny = evacuateConfirmationDeny.UiForm()
+        self.viewEvacuateConfirmationDeny.showEvacuateConfirmationDenied()
 
+    def manageSaleAndPayedLabelVerificationStyle(self, userSaleLabelValue, userPayedLabelValue):
+        greenStyle = "background: rgb(97, 177, 66);\nborder:1px rounded #232323;\nborder-radius: 10px;\nborder-style: outset;"
+        redStyle = "background: rgb(229, 0, 5);\nborder:1px rounded #232323;\nborder-radius: 10px;\nborder-style: outset;"
+        self.putSaleLabel_3.setStyleSheet(greenStyle if userSaleLabelValue == 'True' else redStyle)
+        self.putPayedLabel.setStyleSheet(greenStyle if userPayedLabelValue == 'True' else redStyle)
+
+    def loadUserToEvacuate(self, retrievedData):
+        UiForm.userToEvacuate = retrievedData
+        print("Usuario a eliminar -> ", UiForm.userToEvacuate, " CARGADO correctamente")
+        if UiForm.userToEvacuate[0] is not None:
+            font = QtGui.QFont()
+            font.setPointSize(1)
+            self.putNameLabel.setText(retrievedData[0][0])
+            self.putSaleLabel_3.setText(retrievedData[0][5])
+            self.putSaleLabel_3.setFont(font)
+            self.putPayedLabel.setText(retrievedData[0][7])
+            self.putPayedLabel.setFont(font)
+            self.manageSaleAndPayedLabelVerificationStyle(userSaleLabelValue=retrievedData[0][5], userPayedLabelValue=retrievedData[0][7] )
 
     @staticmethod
     def closeEvacuation():
         return UiForm.formInstance.close() if UiForm.formInstance is not None else 0
 
-    def launchEvacuateConfirmation(self):
-        self.viewEvacuateConfirmaction = evacuateConfirmationDialog.UiForm()
-        self.viewEvacuateConfirmaction.showEvacuateConfirmation()
+    def validateFieldsWithoutForce(self):
+        hasUsersTimeEnd = " "
+        hasUserPaid = " "
+        if UiForm.userToEvacuate[0] is not None:
+            hasUsersTimeEnd = UiForm.userToEvacuate[0][5]
+            hasUserPaid = UiForm.userToEvacuate[0][7]
 
-    def launchForcedEvacuate(self):
+        if hasUsersTimeEnd == "True" and hasUserPaid == "True":
+            self.launchEvacuateConfirmation(ableToDelete=True, userToEvacuateIndex=UiForm.userToEvacuate[1])
+        else:
+            self.launchEvacuateConfirmation(ableToDelete=False, userToEvacuateIndex=UiForm.userToEvacuate[1])
+
+    def validateFieldsWithForce(self):
+        if UiForm.userToEvacuate[0] is not None:
+            self.launchForcedEvacuate(UiForm.userToEvacuate[1])
+        else:
+            self.launchEvacuateConfirmationDeny()
+    def launchEvacuateConfirmation(self, ableToDelete, userToEvacuateIndex):
+        self.viewEvacuateConfirmation = evacuateConfirmationDialog.UiForm()
+        self.viewEvacuateConfirmation.showEvacuateConfirmation(ableToDelete, userToEvacuateIndex)
+
+    def launchForcedEvacuate(self, userToEvacuateIndex):
         self.viewForcedEvacuate = evacuateConfirmationForced.UiForm()
-        self.viewForcedEvacuate.showForcedEvacuate()
+        self.viewForcedEvacuate.showForcedEvacuate(userToEvacuateIndex)

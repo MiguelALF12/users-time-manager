@@ -522,15 +522,21 @@ class UiForm(object):
 
         # other signals
         # Calculating the price based on the totalTime selected
-        self.totalTimeComboBox.activated.connect(lambda: self.putPriceLabel.setText(str(self.calcChargingPrice())))
+        self.totalTimeComboBox.activated.connect(lambda: self.putPriceLabel.setText(
+            str(self.calcChargingVipPrice()) if self.YesVipUserRadioButton.isChecked()
+            else str(self.calcChargingDefaultPrice())))
         # Enable and disable RadioButtons for Vip Users and Payed
-        self.YesPayedRadioButton.toggled['bool'].connect(self.NoPayedRadioButton.setDisabled)
         self.YesPayedRadioButton.toggled['bool'].connect(self.NoPayedRadioButton.setDisabled)
         self.NoPayedRadioButton.toggled['bool'].connect(self.YesPayedRadioButton.setDisabled)
         self.YesVipUserRadioButton.toggled['bool'].connect(self.NoVipUserRadioButton.setDisabled)
         self.NoVipUserRadioButton.toggled['bool'].connect(self.YesVipUserRadioButton.setDisabled)
 
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.YesVipUserRadioButton.clicked.connect(lambda: self.putPriceLabel.setText(
+            str(self.calcChargingVipPrice()) if self.YesVipUserRadioButton.isChecked()
+         else str(self.calcChargingDefaultPrice())))
+        self.NoVipUserRadioButton.clicked.connect(lambda: self.putPriceLabel.setText(
+            str(self.calcChargingDefaultPrice()))) #Thik this one is not neccesary at all
+
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -606,28 +612,21 @@ class UiForm(object):
         else:
             return True
 
-    def calcChargingPrice(self):
+    def calcChargingDefaultPrice(self):
         selectedTime = self.totalTimeComboBox.currentText()
-        if self.YesVipUserRadioButton.isChecked():
-            return VIP_USER_TIME_PRICES[selectedTime] if selectedTime in VIP_USER_TIME_PRICES.keys() else ""
-        else:
-            return DEFAULT_USER_TIME_PRICES[selectedTime] if selectedTime in DEFAULT_USER_TIME_PRICES.keys() else ""
-
+        return DEFAULT_USER_TIME_PRICES[selectedTime] if selectedTime in DEFAULT_USER_TIME_PRICES.keys() else ""
+    def calcChargingVipPrice(self):
+        selectedTime = self.totalTimeComboBox.currentText()
+        return VIP_USER_TIME_PRICES[selectedTime] if selectedTime in VIP_USER_TIME_PRICES.keys() else ""
     def saveUser(self):
-        newUser = {
-            "Nombre": self.nameLineEdit.text().strip(),
-            "Manilla": self.braceletNumLineEdit.text().strip(),
-            "Tiempo": self.totalTimeComboBox.currentText(),
-            "Acudiente": self.ParentLineEdit.text().strip(),
-            "ID-Acudiente": self.ParentIDLineEdit.text().strip(),
-            "Dinero": self.calcChargingPrice(),
-            "Pagado": True if self.YesPayedRadioButton.isChecked() else False,
-            "Usuario VIP": True if self.YesVipUserRadioButton.isChecked() else False,
-            # TODO: Remember manage this when creating count time module
-            "Hora entrada": 0,
-            "Hora salida": 0,
-            "Sale": False
-        }
+        newUser = {"Nombre": self.nameLineEdit.text().strip(), "Manilla": self.braceletNumLineEdit.text().strip(),
+                   "Tiempo": self.totalTimeComboBox.currentText(), "Acudiente": self.ParentLineEdit.text().strip(),
+                   "ID-Acudiente": self.ParentIDLineEdit.text().strip(), "Dinero": self.calcChargingVipPrice() if self.YesVipUserRadioButton.isChecked() else self.calcChargingDefaultPrice() ,
+                   "Pagado": True if self.YesPayedRadioButton.isChecked() else False,
+                   "Usuario VIP": True if self.YesVipUserRadioButton.isChecked() else False, "Hora entrada": 0,
+                   "Hora salida": 0, "Sale": False}
+
+        #Second time to call calcChargingPrice() cuase of the possible change of userVip radi button state
         if self.validateFields(newUser):
             print("Usuario añadido -> ", newUser)
             createUser(newUser)

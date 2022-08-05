@@ -80,7 +80,7 @@ class UiForm(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "CONFIRMACIÓN DE EVACUACIÓN DENEGADA"))
         self.messageLabel.setText(_translate("Form",
-                                             "No se puede evacuar al usuario. Este NO HA PAGADO la TARIFA del servicio y/o tiene TIEMPO DISPONIBLE"))
+                                             "No se puede evacuar al usuario. Revisa si ya PAGÓ SU TARIFA, si su TIEMPO ACABÓ o si relamente seleccionaste a alguíen"))
         self.acceptConfirmEvacuatePushButton.setText(_translate("Form", "Aceptar"))
 
     def showEvacuateConfirmationDenied(self):

@@ -9,12 +9,12 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from FRONTEND.views import evacuateConfirmationAccept,evacuateConfirmationDeny
-
+from FRONTEND.views import evacuateConfirmationAccept, evacuateConfirmationDeny
+from BACKEND.CRUD.CRUD_users import evacuateUser, updateIndexes
 class UiForm(object):
     formInstance = None
 
-    def setupUi(self, Form):
+    def setupUi(self, Form, deleteUserSpecs):
         Form.setObjectName("Form")
         Form.resize(428, 200)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -120,8 +120,14 @@ class UiForm(object):
 
         # Connecting accept, cancel and forced evacuation
         # TODO: HEre goes the verification of users payment and sale attr in order to be able to launch acceptance evacuation message
-        self.acceptConfirmEvacuatePushButton.clicked.connect(self.launchEvacuateConfirmationAccepted)
-        self.cancelConfirmEvacuatePushButton.clicked.connect(self.closeEvacuateConfirmation)
+        if deleteUserSpecs[0]:
+            evacuateUser(deleteUserSpecs[1]) # TODO: (Spanish activated) se debe obtener el indice no mediante la tabla si no mediante el usuario, ya que al momento de eliminar consevutvamente, el indice
+            updateIndexes()
+            self.acceptConfirmEvacuatePushButton.clicked.connect(self.launchEvacuateConfirmationAccepted) #TODO: (1) se actualiza, mientras que el propio del usuario.
+        else:
+            self.acceptConfirmEvacuatePushButton.clicked.connect(self.launchEvacuateConfirmationDenied)
+
+        self.cancelConfirmEvacuatePushButton.clicked.connect(self.closeEvacuateDenyConfirmation)
 
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -135,23 +141,27 @@ class UiForm(object):
         self.acceptConfirmEvacuatePushButton.setText(_translate("Form", "Aceptar"))
         self.cancelConfirmEvacuatePushButton.setText(_translate("Form", "Cancelar"))
 
-    def showEvacuateConfirmation(self):
+    def showEvacuateConfirmation(self, ableToDelete, userToEvacuateIndex):
+        deleteUserSpecs = (ableToDelete, userToEvacuateIndex)
         self.evacuateConfirmationWidgetInstance = QtWidgets.QWidget()
         # self.registerWidgetInstance.setWindowIcon(QtGui.QIcon(":/images/fact.png"))
-        self.setupUi(self.evacuateConfirmationWidgetInstance)
+        self.setupUi(self.evacuateConfirmationWidgetInstance, deleteUserSpecs)
         UiForm.formInstance = self.evacuateConfirmationWidgetInstance
         self.evacuateConfirmationWidgetInstance.show()
 
     @staticmethod
-    def closeEvacuateConfirmation():
+    def closeEvacuateDenyConfirmation():
         # TODO: type allows us to define what to do with the give nuser (remove it or not)
         return UiForm.formInstance.close() if UiForm.formInstance is not None else 0
 
     def launchEvacuateConfirmationAccepted(self):
+        print("-----------------USUARIO ELIMINADO CON EXITO !! -----------------")
         self.viewEvacuateConfirmaction = evacuateConfirmationAccept.UiForm()
         self.viewEvacuateConfirmaction.showEvacuateConfirmationAccepted()
-        self.closeEvacuateConfirmation()
+        self.closeEvacuateDenyConfirmation()
 
     def launchEvacuateConfirmationDenied(self):
+        print("-----------------EL USUARIO NO PUDO SER ELIMINADO !! -----------------")
         self.viewEvacuateConfirmaction = evacuateConfirmationDeny.UiForm()
         self.viewEvacuateConfirmaction.showEvacuateConfirmationDenied()
+        self.closeEvacuateDenyConfirmation()

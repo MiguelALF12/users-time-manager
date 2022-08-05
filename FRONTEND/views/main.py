@@ -266,6 +266,7 @@ class UiMainWindow(object):
         self.bodyFrame = QtWidgets.QFrame(self.centralwidget)
         self.bodyFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.bodyFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.bodyFrame.setStyleSheet("background-color:rgb(175, 127, 33);")
         self.bodyFrame.setObjectName("bodyFrame")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.bodyFrame)
         self.horizontalLayout.setContentsMargins(15, 15, 15, 15)
@@ -432,60 +433,6 @@ class UiMainWindow(object):
         brush.setStyle(QtCore.Qt.SolidPattern)
         item.setForeground(brush)
         self.recordsTableWidget.setHorizontalHeaderItem(9, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        # brush.setStyle(QtCore.Qt.SolidPattern)
-        # item.setBackground(brush)
-        # self.recordsTableWidget.setItem(0, 0, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        # brush.setStyle(QtCore.Qt.SolidPattern)
-        # item.setBackground(brush)
-        # self.recordsTableWidget.setItem(0, 1, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        # brush.setStyle(QtCore.Qt.SolidPattern)
-        # item.setBackground(brush)
-        # self.recordsTableWidget.setItem(0, 2, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        # brush.setStyle(QtCore.Qt.SolidPattern)
-        # item.setBackground(brush)
-        # self.recordsTableWidget.setItem(0, 3, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        # brush.setStyle(QtCore.Qt.SolidPattern)
-        # item.setBackground(brush)
-        # self.recordsTableWidget.setItem(0, 4, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # brush = QtGui.QBrush(QtGui.QColor(113, 207, 65))
-        # brush.setStyle(QtCore.Qt.Dense2Pattern)
-        # item.setBackground(brush)
-        # self.recordsTableWidget.setItem(0, 5, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        # brush.setStyle(QtCore.Qt.SolidPattern)
-        # item.setBackground(brush)
-        # self.recordsTableWidget.setItem(0, 6, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # brush = QtGui.QBrush(QtGui.QColor(113, 207, 65))
-        # brush.setStyle(QtCore.Qt.Dense2Pattern)
-        # item.setBackground(brush)
-        # brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
-        # brush.setStyle(QtCore.Qt.Dense2Pattern)
-        # item.setForeground(brush)
-        # self.recordsTableWidget.setItem(0, 7, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignCenter)
-        # self.recordsTableWidget.setItem(0, 8, item)
-        # item = QtWidgets.QTableWidgetItem()
-        # item.setTextAlignment(QtCore.Qt.AlignJustify | QtCore.Qt.AlignVCenter)
-        # self.recordsTableWidget.setItem(0, 9, item)
         self.recordsTableWidget.horizontalHeader().setVisible(True)
         self.recordsTableWidget.horizontalHeader().setCascadingSectionResizes(True)
         self.recordsTableWidget.horizontalHeader().setDefaultSectionSize(190)
@@ -738,12 +685,11 @@ class UiMainWindow(object):
     # def launchEdit(self):
     #     self.viewEdit = edit.Ui_Form()
     #     self.viewEdit.showEdit()
-    #
-    def launchEvacuate(self):
-        self.getSelectedRows()
-        self.viewEvacuate = evacuate.UiForm()
-        self.viewEvacuate.showEvacuate()
 
+    def launchEvacuate(self):
+        userToEvacuate = self.getSelectedRows()
+        self.viewEvacuate = evacuate.UiForm()
+        self.viewEvacuate.showEvacuate(userToEvacuate)
 
     def search(self):
         # TODO: create a shortcut with enter key, when pressed, call this
@@ -796,6 +742,9 @@ class UiMainWindow(object):
         self.recordsTableWidget.item(rowCount, column).setForeground(trueCellVerificationStyle[1] if
                                                                      usersFieldToVerifyValue else
                                                                      falseCellVerificationStyle[1])
+        font = QtGui.QFont()
+        font.setPointSize(1)
+        self.recordsTableWidget.item(rowCount, column).setFont(font)
 
     def loadUsers(self, dataToLoadSpec):
         global users, usersResultedFromSearch
@@ -823,6 +772,9 @@ class UiMainWindow(object):
             print("CARGANDO USUARIOS ... ")
 
             for user in allData[dataToLoadIndex]:
+                isUserTimeDone = getAttribute(user, "userTimeDone")
+                hasUserPayed = getAttribute(user, "payed")
+
                 self.recordsTableWidget.setVerticalHeaderItem(rowCount, QtWidgets.QTableWidgetItem(
                     str(getAttribute(user, "index"))))
                 self.recordsTableWidget.setItem(rowCount, 0, QtWidgets.QTableWidgetItem(getAttribute(user, "name")))
@@ -836,19 +788,17 @@ class UiMainWindow(object):
                 self.recordsTableWidget.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(
                     str(getAttribute(user, "exitHour"))))
                 self.recordsTableWidget.setItem(rowCount, 5,
-                                                QtWidgets.QTableWidgetItem())  # str(getAttribute(user, "userTimeDone"), this is  not shown
+                                                QtWidgets.QTableWidgetItem(str(isUserTimeDone)))  # str(getAttribute(user, "userTimeDone"), this is  not shown
                 self.recordsTableWidget.setItem(rowCount, 6,
                                                 QtWidgets.QTableWidgetItem(str(getAttribute(user, "money"))))
                 self.recordsTableWidget.setItem(rowCount, 7,
-                                                QtWidgets.QTableWidgetItem())  # getAttribute(user, "payed"), this is not shown
+                                                QtWidgets.QTableWidgetItem(str(hasUserPayed)))  # getAttribute(user, "payed"), this is not shown
                 self.recordsTableWidget.setItem(rowCount, 8, QtWidgets.QTableWidgetItem(getAttribute(user, "parent")))
                 self.recordsTableWidget.setItem(rowCount, 9, QtWidgets.QTableWidgetItem(getAttribute(user, "parentID")))
 
                 # Defining style wheter the user time is done and if it has paid
-                isUserTimeDone = getAttribute(user, "userTimeDone")
-                haveUserPayed = getAttribute(user, "payed")
                 self.manageCellVerificationStyle(rowCount, 5, isUserTimeDone)
-                self.manageCellVerificationStyle(rowCount, 7, haveUserPayed)
+                self.manageCellVerificationStyle(rowCount, 7, hasUserPayed)
 
                 rowCount += 1
 
@@ -864,8 +814,14 @@ class UiMainWindow(object):
             placeholders['PH_TOTAL_MONEY'] if kwargs['totalMoney'] == 0 else str(kwargs['totalMoney']))
 
     def getSelectedRows(self):
-        row = self.recordsTableWidget.selectedItems()
-        print("SELECTED ROW -> ", [data.text().strip() for data in self.recordsTableWidget.selectedItems()])
+        selectedRow = self.recordsTableWidget.selectedItems()
+        userAttr = None
+        rowIndex = None
+        if selectedRow:
+            userAttr = [data.text().strip() for data in selectedRow]
+            rowIndex = selectedRow[0].row()
+        return (userAttr, rowIndex)
+
 
 # TODO: fix someway the recommended Typos and PEP highlights
 # TODO: Fix evacuate putting cancelado option and connecting to main
