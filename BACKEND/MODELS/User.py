@@ -1,16 +1,3 @@
-DEFAULT_USER_TIME_PRICES = {
-    '15 minutos': 8000,
-    '30 minutos': 14000,
-    '1 hora': 18000,
-    '2 horas': 32000,
-}
-
-VIP_USER_TIME_PRICES = {
-    '15 minutos': 8000,
-    '30 minutos': 11500,
-    '1 hora': 14500,
-    '2 horas': 32000,
-}
 
 
 class User:

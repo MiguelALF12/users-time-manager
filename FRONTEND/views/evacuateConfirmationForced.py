@@ -163,5 +163,6 @@ class UiForm(object):
 
     @staticmethod
     def closeForcedEvacuate():
-        # TODO: type allows us to define what to do with the give nuser (remove it or not)
         return UiForm.formInstance.close() if UiForm.formInstance is not None else 0
+
+# TODO: we have an error, when we evacute trhough forced, the labels indicators dont update

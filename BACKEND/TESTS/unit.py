@@ -14,10 +14,11 @@ payedAndUserTimeDoneValues = [True, False]
 def generateRandomUsers():
     global DEFAULT_USER_TIME_PRICES_TEST
 
-    for _ in range(20):
+    for _ in range(4):
         timeSelected = randint(0, 3)
         hasUserPayed = randint(0, 1)
-        userTimeDone = randint(0, 1)
+        userTimeDone = randint(0, 1)  #  use random only when you don't need false value on the field
+
         newUser = {
             "Nombre": names.get_full_name(gender='male'),
             "Manilla": str(randint(1, 101)),
@@ -29,6 +30,6 @@ def generateRandomUsers():
             "Usuario VIP": False,
             "Hora entrada": 0,
             "Hora salida": 0,
-            "Sale": payedAndUserTimeDoneValues[userTimeDone]
+            "Sale": payedAndUserTimeDoneValues[1]
         }
         CRUD_users.createUser(newUser)

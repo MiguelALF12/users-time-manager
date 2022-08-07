@@ -11,11 +11,14 @@
 import sys
 from FRONTEND.views.main import *
 from BACKEND.TESTS.unit import generateRandomUsers
+from BACKEND.CRUD.CRUD_users import startCountingThread
 
 if __name__ == '__main__':
-    #generating random numbers
+    # generating random numbers
     generateRandomUsers()
-
+    # starting counting Thread
+    startCountingThread()  # TODO: Need to verify if the subproccess does finish when the main thread does it
+    print("------------------------PROCESO DE CONTEO INICIADO------------------------")
     app = QtWidgets.QApplication(sys.argv)
     # app.setWindowIcon(QtGui.QIcon(":/images/fact.png"))
     window = QtWidgets.QMainWindow()
@@ -25,3 +28,6 @@ if __name__ == '__main__':
     # hide_button_maximize(window)
     window.show()
     sys.exit(app.exec_())
+
+# TODO: Add keyboard shortcuts like command+Q to exit the app,
+#  enter to make a search, evacuate or submit inofrmation in general

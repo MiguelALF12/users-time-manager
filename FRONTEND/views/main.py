@@ -746,6 +746,12 @@ class UiMainWindow(object):
         font.setPointSize(1)
         self.recordsTableWidget.item(rowCount, column).setFont(font)
 
+    # def startTimeCounter(self):
+    #     global users
+    #     usersTime = []
+    #     for user in users:
+    #         usersTime.append((getAttribute(user, "index"), getAttribute(user, "totalTime")))
+
     def loadUsers(self, dataToLoadSpec):
         global users, usersResultedFromSearch
         # Matrix with [[Registered users], [users resulted from search]]
@@ -784,9 +790,9 @@ class UiMainWindow(object):
                                                 QtWidgets.QTableWidgetItem(getAttribute(user, "totalTime")))
                 # TODO: Count time Module needed
                 self.recordsTableWidget.setItem(rowCount, 3, QtWidgets.QTableWidgetItem(
-                    str(getAttribute(user, "entryHour"))))
+                    str(getAttribute(user, "entryHour").strftime("%H:%M:%S"))))
                 self.recordsTableWidget.setItem(rowCount, 4, QtWidgets.QTableWidgetItem(
-                    str(getAttribute(user, "exitHour"))))
+                    str(getAttribute(user, "exitHour").strftime("%H:%M:%S"))))
                 self.recordsTableWidget.setItem(rowCount, 5,
                                                 QtWidgets.QTableWidgetItem(str(isUserTimeDone)))  # str(getAttribute(user, "userTimeDone"), this is  not shown
                 self.recordsTableWidget.setItem(rowCount, 6,
@@ -824,4 +830,3 @@ class UiMainWindow(object):
 
 
 # TODO: fix someway the recommended Typos and PEP highlights
-# TODO: Fix evacuate putting cancelado option and connecting to main

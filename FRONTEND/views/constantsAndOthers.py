@@ -24,3 +24,12 @@ VIP_USER_TIME_PRICES = {
     '1 hora': 14500,
     '2 horas': 32000,
 }
+
+totalTimeConvertion = {
+    # TODO: This really need to go like this?
+    # (minute-hour, seconds)
+    '15 minutos': (0, 15, 900),
+    '30 minutos': (0, 30, 1800),
+    '1 hora': (1, 60, 3600),
+    '2 horas': (2, 120, 7200)
+}
