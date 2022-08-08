@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from FRONTEND.views import evacuateConfirmationAccept, evacuateConfirmationDeny
+from FRONTEND import evacuateConfirmationAccept, evacuateConfirmationDeny
 from BACKEND.CRUD.CRUD_users import evacuateUser, updateIndexes
 class UiForm(object):
     formInstance = None

@@ -9,9 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from FRONTEND.views import icons
-from FRONTEND.views import evacuateConfirmationDialog, evacuateConfirmationForced, evacuateConfirmationDeny
-from FRONTEND.views.constantsAndOthers import placeholders
+from FRONTEND import evacuateConfirmationDialog, evacuateConfirmationForced, evacuateConfirmationDeny
+from FRONTEND.constantsAndOthers import placeholders
 
 class UiForm(object):
     formInstance = None

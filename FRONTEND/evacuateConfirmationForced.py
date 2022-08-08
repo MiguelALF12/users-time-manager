@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from FRONTEND.views import evacuateConfirmationAccept
+from FRONTEND import evacuateConfirmationAccept
 from BACKEND.CRUD.CRUD_users import evacuateUser, updateIndexes
 
 

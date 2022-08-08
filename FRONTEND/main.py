@@ -11,13 +11,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
-from FRONTEND.views import icons
-from FRONTEND.views import register, evacuate
-from FRONTEND.views.constantsAndOthers import placeholders
-# from BACKEND.CRUD.CRUD_local_storage import CrudLocalStorage
+from FRONTEND import register, evacuate, edit
+from FRONTEND.constantsAndOthers import placeholders
 from BACKEND.CRUD.CRUD_users import *
-
-from functools import reduce
 
 users = CrudLocalStorage.getUsers()
 usersResultedFromSearch = list()
@@ -595,7 +591,7 @@ class UiMainWindow(object):
 
         # Connecting buttons with pages
         self.crud_recordPushButton.clicked.connect(self.launchRegister)
-        # self.crud_editPushButton.clicked.connect(self.launchEdit)
+        self.crud_editPushButton.clicked.connect(self.launchEdit)
         self.evacuatePushButton.clicked.connect(self.launchEvacuate)
 
         # Search button connections
@@ -682,9 +678,10 @@ class UiMainWindow(object):
         self.viewRegister = register.UiForm()
         self.viewRegister.showRegister()
 
-    # def launchEdit(self):
-    #     self.viewEdit = edit.Ui_Form()
-    #     self.viewEdit.showEdit()
+    def launchEdit(self):
+        userToEdit = self.getSelectedRows()
+        self.viewEdit = edit.UiForm()
+        self.viewEdit.showEdit(userToEdit)
 
     def launchEvacuate(self):
         userToEvacuate = self.getSelectedRows()
@@ -745,12 +742,6 @@ class UiMainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(1)
         self.recordsTableWidget.item(rowCount, column).setFont(font)
-
-    # def startTimeCounter(self):
-    #     global users
-    #     usersTime = []
-    #     for user in users:
-    #         usersTime.append((getAttribute(user, "index"), getAttribute(user, "totalTime")))
 
     def loadUsers(self, dataToLoadSpec):
         global users, usersResultedFromSearch

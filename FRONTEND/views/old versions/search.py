@@ -10,7 +10,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from FRONTEND.views.constantsAndOthers import placeholders
+from FRONTEND.constantsAndOthers import placeholders
 
 
 class Ui_Form(object):

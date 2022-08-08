@@ -10,8 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
-from FRONTEND.views import icons
-from FRONTEND.views.constantsAndOthers import placeholders, DEFAULT_USER_TIME_PRICES, VIP_USER_TIME_PRICES
+from FRONTEND.constantsAndOthers import placeholders, DEFAULT_USER_TIME_PRICES, VIP_USER_TIME_PRICES
 from BACKEND.CRUD.CRUD_users import *
 
 
@@ -523,8 +522,8 @@ class UiForm(object):
         # other signals
         # Calculating the price based on the totalTime selected
         self.totalTimeComboBox.activated.connect(lambda: self.putPriceLabel.setText(
-            str(self.calcChargingVipPrice()) if self.YesVipUserRadioButton.isChecked()
-            else str(self.calcChargingDefaultPrice())))
+            str(calcChargingPrice(self.totalTimeComboBox.currentText(), "vip")) if self.YesVipUserRadioButton.isChecked()
+            else str(calcChargingPrice(self.totalTimeComboBox.currentText(), "default"))))
         # Enable and disable RadioButtons for Vip Users and Payed
         self.YesPayedRadioButton.toggled['bool'].connect(self.NoPayedRadioButton.setDisabled)
         self.NoPayedRadioButton.toggled['bool'].connect(self.YesPayedRadioButton.setDisabled)
@@ -532,10 +531,11 @@ class UiForm(object):
         self.NoVipUserRadioButton.toggled['bool'].connect(self.YesVipUserRadioButton.setDisabled)
 
         self.YesVipUserRadioButton.clicked.connect(lambda: self.putPriceLabel.setText(
-            str(self.calcChargingVipPrice()) if self.YesVipUserRadioButton.isChecked()
-         else str(self.calcChargingDefaultPrice())))
+            str(calcChargingPrice(self.totalTimeComboBox.currentText(), "vip")) if self.YesVipUserRadioButton.isChecked()
+         else str(calcChargingPrice(self.totalTimeComboBox.currentText(), "default"))))
         self.NoVipUserRadioButton.clicked.connect(lambda: self.putPriceLabel.setText(
-            str(self.calcChargingDefaultPrice()))) #Thik this one is not neccesary at all
+            str(calcChargingPrice(self.totalTimeComboBox.currentText(), "default"))))  # Think this one is not
+        # neccesary at all
 
 
     def retranslateUi(self, Form):
@@ -585,7 +585,7 @@ class UiForm(object):
         return UiForm.formInstance.close() if UiForm.formInstance is not None else 0
 
     @staticmethod
-    def show_pop_up(show_text, message_type):
+    def showPopUp(show_text, message_type):
         message = QMessageBox()
         # message.windowIcon()
         message.setWindowTitle("Arenero PlayKids")
@@ -608,20 +608,15 @@ class UiForm(object):
                     fieldsWithErrors.append(field)
         if len(fieldsWithErrors) != 0:
             separator = ","
-            self.show_pop_up(f"Tienes errores en los campos {separator.join(fieldsWithErrors)}", QMessageBox.Warning)
+            self.showPopUp(f"Tienes errores en los campos {separator.join(fieldsWithErrors)}", QMessageBox.Warning)
+            return False
         else:
             return True
 
-    def calcChargingDefaultPrice(self):
-        selectedTime = self.totalTimeComboBox.currentText()
-        return DEFAULT_USER_TIME_PRICES[selectedTime] if selectedTime in DEFAULT_USER_TIME_PRICES.keys() else ""
-    def calcChargingVipPrice(self):
-        selectedTime = self.totalTimeComboBox.currentText()
-        return VIP_USER_TIME_PRICES[selectedTime] if selectedTime in VIP_USER_TIME_PRICES.keys() else ""
     def saveUser(self):
         newUser = {"Nombre": self.nameLineEdit.text().strip(), "Manilla": self.braceletNumLineEdit.text().strip(),
                    "Tiempo": self.totalTimeComboBox.currentText(), "Acudiente": self.ParentLineEdit.text().strip(),
-                   "ID-Acudiente": self.ParentIDLineEdit.text().strip(), "Dinero": self.calcChargingVipPrice() if self.YesVipUserRadioButton.isChecked() else self.calcChargingDefaultPrice() ,
+                   "ID-Acudiente": self.ParentIDLineEdit.text().strip(), "Dinero": calcChargingPrice(self.totalTimeComboBox.currentText(), "vip") if self.YesVipUserRadioButton.isChecked() else calcChargingPrice(self.totalTimeComboBox.currentText(), "default") ,
                    "Pagado": True if self.YesPayedRadioButton.isChecked() else False,
                    "Usuario VIP": True if self.YesVipUserRadioButton.isChecked() else False, "Hora entrada": 0,
                    "Hora salida": 0, "Sale": False}

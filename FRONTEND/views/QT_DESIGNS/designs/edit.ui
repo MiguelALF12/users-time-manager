@@ -58,6 +58,9 @@
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color:#000000;</string>
+       </property>
        <property name="text">
         <string>EDITAR USUARIO</string>
        </property>
@@ -78,186 +81,20 @@
      <item>
       <layout class="QHBoxLayout" name="searchRecordLayout">
        <item>
-        <spacer name="horizontalSpacer_3">
+        <widget class="Line" name="line">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="searchIdentifierLabel">
-         <property name="font">
-          <font>
-           <pointsize>19</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>IDENTIFICADOR</string>
-         </property>
         </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="searchLineEdit">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>466</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>466</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Helvetica</family>
-           <pointsize>-1</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="mouseTracking">
-          <bool>true</bool>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::StrongFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLineEdit{
-	background-color: #ffffff;
-	border: 1px rounded #232323;
-    border-radius: 12px;
-    border-style: outset;
-    font-family: &quot;Helvetica&quot;;
-    font-weight: 400;
-    font-size: 18px;
-    text-align: left;
-padding-left: 10px;
-}
-
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="frame">
-          <bool>false</bool>
-         </property>
-         <property name="readOnly">
-          <bool>false</bool>
-         </property>
-         <property name="placeholderText">
-          <string>Buscar registro</string>
-         </property>
-         <property name="clearButtonEnabled">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="searchRecordPushButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>50</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>50</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton{
-	padding: 0px 10px 0px 10px;
-    background: rgb(255, 246, 53);
-    color: #ffffff;
-	border:1px rounded #232323;
-    border-radius: 10px;
-    border-style: outset;
-}
-
-QPushButton:hover {
-    background: rgb(232, 218, 70);
-    }
-
-QPushButton:pressed {
-    border-style: inset;
-    background: rgb(214, 218, 218);
-    }</string>
-         </property>
-         <property name="icon">
-          <iconset resource="visuals/icons.qrc">
-           <normaloff>:/usedIcons/icons8-search-30.png</normaloff>:/usedIcons/icons8-search-30.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>24</width>
-           <height>24</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </item>
     </layout>
    </item>
    <item>
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Minimum</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>30</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="bodyLayou">
+    <layout class="QHBoxLayout" name="bodyLayout">
      <item>
-      <layout class="QFormLayout" name="nama_braceletNum_formLayout">
+      <layout class="QFormLayout" name="name_braceletNum_formLayout">
        <property name="rowWrapPolicy">
         <enum>QFormLayout::WrapLongRows</enum>
        </property>
@@ -267,7 +104,7 @@ QPushButton:pressed {
        <property name="formAlignment">
         <set>Qt::AlignCenter</set>
        </property>
-       <item row="0" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="nameLabel">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -303,118 +140,7 @@ color:#ffffff;</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="braceletNumLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>17</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:rgb(80, 80, 80);
-color:#ffffff;</string>
-         </property>
-         <property name="text">
-          <string>Número de manilla</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-         <property name="margin">
-          <number>3</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="braceletNumLineEdit">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>100</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>17</pointsize>
-          </font>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::StrongFocus</enum>
-         </property>
-         <property name="toolTip">
-          <string>Total de personas</string>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: #ffffff;
-border:2px rounded #232323;
-border-radius: 10px;
-border-style: outset;
-border-color: rgb(57, 57, 57);
-padding-left:25px;</string>
-         </property>
-         <property name="frame">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="readOnly">
-          <bool>false</bool>
-         </property>
-         <property name="placeholderText">
-          <string>0</string>
-         </property>
-         <property name="clearButtonEnabled">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
        <item row="2" column="1">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>80</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="1">
         <widget class="QLineEdit" name="nameLineEdit">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -467,6 +193,359 @@ padding-left:25px;</string>
          </property>
          <property name="clearButtonEnabled">
           <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="braceletNumLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:rgb(80, 80, 80);
+color:#ffffff;</string>
+         </property>
+         <property name="text">
+          <string>Número de manilla</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="braceletNumLineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="toolTip">
+          <string>Total de personas</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: #ffffff;
+border:2px rounded #232323;
+border-radius: 10px;
+border-style: outset;
+border-color: rgb(57, 57, 57);
+padding-left:25px;</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+         <property name="placeholderText">
+          <string>0</string>
+         </property>
+         <property name="clearButtonEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="parentLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:rgb(80, 80, 80);
+color:#ffffff;</string>
+         </property>
+         <property name="text">
+          <string>Acudiente</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="ParentLineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>210</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>210</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>Total de personas</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: #ffffff;
+border:2px rounded;
+border-radius: 10px;
+border-style: outset;
+border-color: rgb(57, 57, 57);
+color:#000000;</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+         <property name="placeholderText">
+          <string>Ej: Juliana Vélez</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="parentIDLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:rgb(80, 80, 80);
+color:#ffffff;</string>
+         </property>
+         <property name="text">
+          <string>Acudiente-ID</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="ParentIDLineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>130</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>130</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>Total de personas</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: #ffffff;
+border:2px rounded;
+border-radius: 10px;
+border-style: outset;
+border-color: rgb(57, 57, 57);
+color:#000000;</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+         <property name="placeholderText">
+          <string>Ej: La cedula</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="ParentIDLineEdit_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>Total de personas</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: #ffffff;
+border:2px rounded;
+border-radius: 10px;
+border-style: outset;
+border-color: rgb(57, 57, 57);
+color:#000000;</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+         <property name="placeholderText">
+          <string>1, 2, 3, ...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="parentIDLabel_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:rgb(80, 80, 80);
+color:#ffffff;</string>
+         </property>
+         <property name="text">
+          <string>Index</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
          </property>
         </widget>
        </item>
@@ -552,6 +631,7 @@ color:#ffffff;</string>
     border-style: outset;
     background-color: #ffffff;
 	padding: 5 px;
+	color:#000000;
 }</string>
          </property>
          <property name="frameShape">
@@ -607,97 +687,6 @@ color:#ffffff;</string>
          </property>
          <property name="margin">
           <number>3</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="addedValueLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>17</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:rgb(80, 80, 80);
-color:#ffffff;</string>
-         </property>
-         <property name="text">
-          <string>Valor añadido</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="margin">
-          <number>3</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="putExtraPriceLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>130</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>130</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>17</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {
-    border: 2px rounded;
-	border-color: rgb(57, 57, 57);
-    border-radius: 8px;
-    border-style: outset;
-    background-color: #ffffff;
-	padding: 5 px;
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
-         </property>
-         <property name="lineWidth">
-          <number>2</number>
-         </property>
-         <property name="text">
-          <string>$0</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="margin">
-          <number>1</number>
          </property>
         </widget>
        </item>
@@ -773,6 +762,7 @@ color:#ffffff;</string>
     border-style: outset;
     background-color: #ffffff;
 	padding: 5 px;
+	color:#000000;
 }</string>
          </property>
          <property name="frameShape">
@@ -831,7 +821,7 @@ color:#ffffff;</string>
 	border-color: rgb(57, 57, 57);
     padding: 5px 18px 5px 5px;   
 	background-color:#ffffff;
-	color:#000;
+	color:#000000;
 }
 
 QComboBox QAbstractItemView::item{
@@ -885,7 +875,7 @@ QComboBox QAbstractItemView::item:hover {
        <property name="formAlignment">
         <set>Qt::AlignCenter</set>
        </property>
-       <item row="0" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="priceLabel">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -924,7 +914,7 @@ color:#ffffff;</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
+       <item row="2" column="1">
         <widget class="QLabel" name="putPriceLabel">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -957,6 +947,7 @@ color:#ffffff;</string>
     border-style: outset;
     background-color: #ffffff;
 	padding: 5 px;
+	color:#000000;
 }</string>
          </property>
          <property name="frameShape">
@@ -979,7 +970,7 @@ color:#ffffff;</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="payedLabel">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1015,71 +1006,8 @@ color:#ffffff;</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="1">
+       <item row="3" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLabel" name="putPayedLabel">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>70</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>70</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-    border: 2px rounded;
-	border-color: rgb(57, 57, 57);
-    border-radius: 8px;
-    border-style: outset;
-    background-color: rgb(119, 191, 65);
-	padding: 5 px;
-}</string>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::NoFrame</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Plain</enum>
-           </property>
-           <property name="lineWidth">
-            <number>2</number>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="margin">
-            <number>1</number>
-           </property>
-          </widget>
-         </item>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
@@ -1139,6 +1067,98 @@ color:#ffffff;</string>
           </layout>
          </item>
         </layout>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="putExtraPriceLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>130</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>130</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    border: 2px rounded;
+	border-color: rgb(57, 57, 57);
+    border-radius: 8px;
+    border-style: outset;
+    background-color: #ffffff;
+	padding: 5 px;
+	color:#000000;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>2</number>
+         </property>
+         <property name="text">
+          <string>$0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="addedValueLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:rgb(80, 80, 80);
+color:#ffffff;</string>
+         </property>
+         <property name="text">
+          <string>Valor añadido</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -1284,5 +1304,38 @@ QPushButton:pressed {
  <resources>
   <include location="visuals/icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>YesPayedRadioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>NoPayedRadioButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1050</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1088</x>
+     <y>272</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>NoPayedRadioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>YesPayedRadioButton</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1078</x>
+     <y>282</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1032</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
