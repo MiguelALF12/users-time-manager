@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1250</width>
-    <height>778</height>
+    <height>791</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -87,6 +87,9 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="searchRecordLayout">
+          <property name="spacing">
+           <number>20</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="searchLineEdit">
             <property name="sizePolicy">
@@ -124,6 +127,7 @@
     font-size: 18px;
     text-align: left;
 padding-left: 10px;
+color:#000000;
 }
 
 </string>
@@ -143,6 +147,52 @@ padding-left: 10px;
             <property name="clearButtonEnabled">
              <bool>true</bool>
             </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="searchRecordParametercomboBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>140</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>140</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QComboBox {
+	border: 2px rounded;
+    border-radius: 8px;
+    border-style: outset;   
+	border-color: rgb(57, 57, 57);
+    padding: 5px 18px 5px 5px;   
+	background-color:#ffffff;
+     color:#000000;
+}
+
+QComboBox QAbstractItemView::item{
+	background-color: #ffffff; 
+}
+
+QComboBox QAbstractItemView::item:hover {
+    color: #ffffff;
+}</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>Seleccionar</string>
+             </property>
+            </item>
            </widget>
           </item>
           <item>
@@ -195,7 +245,7 @@ QPushButton:pressed {
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="icons/icons.qrc">
+             <iconset resource="visuals/icons.qrc">
               <normaloff>:/usedIcons/icons8-children-30.png</normaloff>:/usedIcons/icons8-children-30.png</iconset>
             </property>
             <property name="iconSize">
@@ -260,13 +310,14 @@ QPushButton:pressed {
             <property name="styleSheet">
              <string notr="true">background:#ffffff;
 border:1px rounded;
-border-radius: 10px;</string>
+border-radius: 10px;
+color:#000000;</string>
             </property>
             <property name="midLineWidth">
              <number>-1</number>
             </property>
             <property name="text">
-             <string>ADICIONAR - BUSCAR - MANIPULAR REGISTROS POR INDEPENDIENTE</string>
+             <string>MANIPULAR USUARIOS REGISTRADOS</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -342,7 +393,7 @@ QPushButton:pressed {
              <string>REGISTRAR</string>
             </property>
             <property name="icon">
-             <iconset resource="icons/icons.qrc">
+             <iconset resource="visuals/icons.qrc">
               <normaloff>:/usedIcons/icons8-pen-64.png</normaloff>:/usedIcons/icons8-pen-64.png</iconset>
             </property>
             <property name="iconSize">
@@ -350,57 +401,6 @@ QPushButton:pressed {
               <width>20</width>
               <height>20</height>
              </size>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="crud_searchPushButton">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>95</width>
-              <height>32</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>95</width>
-              <height>32</height>
-             </size>
-            </property>
-            <property name="toolTip">
-             <string>Buscar usuario</string>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-	padding: 0px 10px 0px 10px;
-    background: #e0d1bd;
-    color: #232323;
-	border:1px rounded #232323;
-    border-radius: 10px;
-    border-style: outset;
-}
-
-QPushButton:hover {
-    background-color:rgb(187, 179, 155);
-    }
-
-QPushButton:pressed {
-    border-style: inset;
-    background: rgb(214, 218, 218);
-    }</string>
-            </property>
-            <property name="text">
-             <string>BUSCAR</string>
-            </property>
-            <property name="icon">
-             <iconset resource="icons/icons.qrc">
-              <normaloff>:/usedIcons/icons8-search-30.png</normaloff>:/usedIcons/icons8-search-30.png</iconset>
             </property>
            </widget>
           </item>
@@ -450,7 +450,7 @@ QPushButton:pressed {
              <string>EDITAR</string>
             </property>
             <property name="icon">
-             <iconset resource="icons/icons.qrc">
+             <iconset resource="visuals/icons.qrc">
               <normaloff>:/usedIcons/icons8-edit-64.png</normaloff>:/usedIcons/icons8-edit-64.png</iconset>
             </property>
             <property name="iconSize">
@@ -469,6 +469,9 @@ QPushButton:pressed {
     </item>
     <item>
      <widget class="QFrame" name="bodyFrame">
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(175, 127, 33);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -532,12 +535,15 @@ QTableWidget{
           <bool>true</bool>
          </property>
          <property name="editTriggers">
-          <set>QAbstractItemView::NoEditTriggers</set>
+          <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
          </property>
          <property name="tabKeyNavigation">
           <bool>false</bool>
          </property>
          <property name="showDropIndicator" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="dragEnabled">
           <bool>false</bool>
          </property>
          <property name="dragDropOverwriteMode">
@@ -547,7 +553,7 @@ QTableWidget{
           <enum>Qt::TargetMoveAction</enum>
          </property>
          <property name="selectionMode">
-          <enum>QAbstractItemView::MultiSelection</enum>
+          <enum>QAbstractItemView::SingleSelection</enum>
          </property>
          <property name="selectionBehavior">
           <enum>QAbstractItemView::SelectRows</enum>
@@ -571,7 +577,7 @@ QTableWidget{
           <bool>false</bool>
          </property>
          <property name="columnCount">
-          <number>8</number>
+          <number>10</number>
          </property>
          <attribute name="horizontalHeaderVisible">
           <bool>true</bool>
@@ -583,7 +589,7 @@ QTableWidget{
           <number>190</number>
          </attribute>
          <attribute name="horizontalHeaderHighlightSections">
-          <bool>true</bool>
+          <bool>false</bool>
          </attribute>
          <attribute name="horizontalHeaderMinimumSectionSize">
           <number>190</number>
@@ -604,7 +610,7 @@ QTableWidget{
           <number>39</number>
          </attribute>
          <attribute name="verticalHeaderMinimumSectionSize">
-          <number>30</number>
+          <number>39</number>
          </attribute>
          <attribute name="verticalHeaderShowSortIndicator" stdset="0">
           <bool>false</bool>
@@ -717,7 +723,7 @@ QTableWidget{
          </column>
          <column>
           <property name="text">
-           <string>Tiempo extra</string>
+           <string>Hora de entrada</string>
           </property>
           <property name="font">
            <font>
@@ -748,7 +754,7 @@ QTableWidget{
          </column>
          <column>
           <property name="text">
-           <string>Hora de entrada</string>
+           <string>Hora estimada de salida</string>
           </property>
           <property name="font">
            <font>
@@ -870,6 +876,68 @@ QTableWidget{
            </brush>
           </property>
          </column>
+         <column>
+          <property name="text">
+           <string>Acudiente</string>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="textAlignment">
+           <set>AlignCenter</set>
+          </property>
+          <property name="background">
+           <color>
+            <red>187</red>
+            <green>80</green>
+            <blue>35</blue>
+           </color>
+          </property>
+          <property name="foreground">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Acudiente-ID</string>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="textAlignment">
+           <set>AlignCenter</set>
+          </property>
+          <property name="background">
+           <color>
+            <red>187</red>
+            <green>80</green>
+            <blue>35</blue>
+           </color>
+          </property>
+          <property name="foreground">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </property>
+         </column>
          <item row="0" column="0">
           <property name="text">
            <string>Miguel Angel Lopez Fernandez</string>
@@ -959,9 +1027,9 @@ QTableWidget{
           <property name="background">
            <brush brushstyle="Dense2Pattern">
             <color alpha="255">
-             <red>113</red>
-             <green>207</green>
-             <blue>65</blue>
+             <red>223</red>
+             <green>0</green>
+             <blue>13</blue>
             </color>
            </brush>
           </property>
@@ -1004,6 +1072,22 @@ QTableWidget{
              <blue>0</blue>
             </color>
            </brush>
+          </property>
+         </item>
+         <item row="0" column="8">
+          <property name="text">
+           <string>Lina Fernandez</string>
+          </property>
+          <property name="textAlignment">
+           <set>AlignCenter</set>
+          </property>
+         </item>
+         <item row="0" column="9">
+          <property name="text">
+           <string>1004718953</string>
+          </property>
+          <property name="textAlignment">
+           <set>AlignJustify|AlignVCenter</set>
           </property>
          </item>
         </widget>
@@ -1069,7 +1153,8 @@ QTableWidget{
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background:#ffffff;</string>
+           <string notr="true">background:#ffffff;
+color:#000000;</string>
           </property>
           <property name="text">
            <string>Total de personas</string>
@@ -1080,7 +1165,7 @@ QTableWidget{
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="putTotalTimeLabel">
+         <widget class="QLabel" name="putTotalPeopleLabel">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1112,6 +1197,7 @@ QTableWidget{
     border-style: outset;
     background-color: #ffffff;
 	padding: 5 px;
+    color:#000000;
 }</string>
           </property>
           <property name="frameShape">
@@ -1200,7 +1286,7 @@ QPushButton:pressed {
          <string>EVACUAR</string>
         </property>
         <property name="icon">
-         <iconset resource="icons/icons.qrc">
+         <iconset resource="visuals/icons.qrc">
           <normaloff>:/usedIcons/icons8-sign-out-30.png</normaloff>:/usedIcons/icons8-sign-out-30.png</iconset>
         </property>
         <property name="iconSize">
@@ -1264,7 +1350,8 @@ QPushButton:pressed {
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background:#ffffff;</string>
+           <string notr="true">background:#ffffff;
+color:#000000;</string>
           </property>
           <property name="text">
            <string>Dinero total</string>
@@ -1275,7 +1362,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="putTotalTimeLabel_2">
+         <widget class="QLabel" name="putTotalMoneyLabel">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1307,6 +1394,7 @@ QPushButton:pressed {
     border-style: outset;
     background-color: #ffffff;
 	padding: 5 px;
+    color:#000000;
 }</string>
           </property>
           <property name="frameShape">
@@ -1351,7 +1439,7 @@ QPushButton:pressed {
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="icons/icons.qrc"/>
+  <include location="visuals/icons.qrc"/>
  </resources>
  <connections/>
 </ui>
